@@ -1,0 +1,89 @@
+{
+  "hero": {
+    "greeting": "Hello !",
+    "title": "Contact Us for",
+    "highlightedTitle": "Engineering",
+    "subtitle": "Work",
+    "description": "Engineering is the art of turning ideas into structures, precision into performance, and vision into artefacts that shape the world we live in.",
+    "experience": {
+      "years": "10 Years",
+      "label": "Experince"
+    }
+  },
+  "services": [
+    {
+      "id": 1,
+      "title": "Mechanical",
+      "description": "Expert mechanical engineering solutions for industrial applications"
+    },
+    {
+      "id": 2,
+      "title": "Electrical",
+      "description": "Comprehensive electrical engineering and automation services"
+    },
+    {
+      "id": 3,
+      "title": "Civil",
+      "description": "Structural and civil engineering design and implementation"
+    }
+  ],
+  "whyChooseUs": {
+    "title": "Why Choose Us ?",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus nunc, posuere in justo vulputate, bibendum sodales",
+    "stats": [
+      {
+        "value": "450+",
+        "label": "Project Completed"
+      },
+      {
+        "value": "60+",
+        "label": "Happy Clients"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": 1,
+      "title": "Sky Bill",
+      "category": "Industrial Design"
+    },
+    {
+      "id": 2,
+      "title": "Poke Yoe",
+      "category": "Mechanical Systems"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "role": "CEO, Tech Corp",
+      "content": "Working with this team was an absolute pleasure. They delivered exceptional engineering solutions that exceeded our expectations.",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "role": "Project Manager",
+      "content": "Professional, timely, and highly skilled. Our project was completed ahead of schedule with outstanding quality.",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "name": "Michael Brown",
+      "role": "Operations Director",
+      "content": "Their attention to detail and commitment to excellence made all the difference in our complex engineering project.",
+      "rating": 5
+    }
+  ],
+  "footer": {
+    "sections": [
+      "Consultation",
+      "Build Concept",
+      "CAD",
+      "Make Change",
+      "Finish"
+    ],
+    "description": "All Engineering Solution"
+  }
+}
