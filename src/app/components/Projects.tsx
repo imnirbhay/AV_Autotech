@@ -1,20 +1,17 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import { useInView } from './hooks/useInView';
-import { useServices } from '../../services/queries';
-import imgFrame58 from '../../assets/3a75595023a84fef860d0682e77b0cec39ece463.png';
+import { useProjects } from '../../services/queries';
+import imgFrame26 from '../../assets/5cf28d4ff7cabdc9b27cdea620bb18818f2d6f54.png';
+import imgFrame28 from '../../assets/2e2146d6ef43febb94a0229038f623c9a714e196.png';
 
-export function Services() {
+export function Projects() {
   const { ref, isInView } = useInView();
-  const { data: servicesResponse = {} } = useServices();
+  const { data: projectsResponse = {} } = useProjects();
 
-  // Extract the actual services array from the response
-  const services = servicesResponse?.data || [];
-
-  // Debug log
-  console.log('Services Response:', servicesResponse);
-  console.log('Services Array:', services);
-  console.log('Length:', services?.length);
+  // Extract the actual projects array from the response
+  const projects = projectsResponse?.data || [];
+  const projectImages = [imgFrame26, imgFrame28];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -36,16 +33,9 @@ export function Services() {
   };
 
   return (
-    <section id="services" ref={ref} className="py-20 flex justify-center">
+    <section id="projects" ref={ref} className="py-20 flex justify-center">
       <div className="w-full max-w-[1336px] mx-auto px-8">
         <div className="bg-[#171717] rounded-[50px] p-[60px] relative overflow-hidden">
-          {/* Background Pattern */}
-          <img 
-            alt="" 
-            className="absolute inset-0 w-full h-full object-cover opacity-20 rounded-[50px]" 
-            src={imgFrame58} 
-          />
-
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -59,53 +49,47 @@ export function Services() {
             >
               <div className="font-['Urbanist',sans-serif] text-[64px] leading-none tracking-[-1.28px]">
                 <span className="font-semibold text-[#fcfcfd]">My </span>
-                <span className="font-bold text-white">Services</span>
+                <span className="font-bold text-white">Projects</span>
               </div>
               <p className="font-['Montserrat',sans-serif] text-[24px] text-white tracking-[-0.48px] max-w-[489px]">
-                Comprehensive engineering solutions tailored to meet your unique requirements and deliver excellence.
+                Explore our portfolio of successful engineering projects. From concept to completion, we deliver excellence in every undertaking.
               </p>
             </motion.div>
 
-            {/* Service Cards */}
+            {/* Project Cards */}
             <motion.div 
               variants={containerVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
-              {services && Array.isArray(services) && services.length > 0 ? (
-                services.map((service: any) => (
+              {projects && Array.isArray(projects) && projects.length > 0 ? (
+                projects.map((project: any, index: number) => (
                   <motion.div
-                    key={service._id}
+                    key={project.id}
                     variants={cardVariants}
                     className="group"
                   >
                     <div className="relative h-[400px] rounded-[32px] overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer bg-gradient-to-br from-[#3b82e6] to-[#1e3a8a]">
                       {/* Background Image */}
-                      {service.image && (
-                        <img
-                          src={service.image}
-                          alt={service.title}
-                          className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                      )}
-                      
+                      <img
+                        src={projectImages[index % 2]}
+                        alt={project.title}
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
                       {/* Dark Overlay - Gets darker on hover */}
                       <div className="absolute inset-0 bg-black/40 group-hover:bg-black/70 transition-colors duration-300" />
-
                       {/* Content Container */}
                       <div className="absolute inset-0 flex flex-col justify-end p-8">
-                        {/* Service Title - Always visible */}
+                        {/* Project Title - Always visible */}
                         <h3 className="font-['Urbanist',sans-serif] font-bold text-[40px] text-white tracking-[-0.8px] mb-4 group-hover:mb-4 transition-all duration-300">
-                          {service.title}
+                          {project.title}
                         </h3>
-
-                        {/* Description and Button - Hidden by default, shown on hover */}
+                        {/* Category and Button - Hidden by default, shown on hover */}
                         <div className="max-h-0 overflow-hidden group-hover:max-h-64 transition-all duration-500 ease-in-out">
                           <p className="font-['Montserrat',sans-serif] text-[14px] text-white/90 leading-relaxed mb-6">
-                            {service.description}
+                            {project.category}
                           </p>
-                          
                           {/* View Details Button */}
                           <button className="inline-flex items-center gap-2 bg-[#3b82e6] hover:bg-white text-white hover:text-[#3b82e6] font-['Urbanist',sans-serif] font-semibold text-[14px] py-3 px-6 rounded-[20px] transition-all duration-300">
                             View Details
@@ -118,20 +102,9 @@ export function Services() {
                 ))
               ) : (
                 <div className="col-span-full text-center py-12">
-                  <p className="font-['Montserrat',sans-serif] text-[16px] text-white/60">No services available</p>
+                  <p className="font-['Montserrat',sans-serif] text-[16px] text-white/60">No projects available</p>
                 </div>
               )}
-            </motion.div>
-
-            {/* Dots Navigation */}
-            <motion.div 
-              variants={cardVariants}
-              className="flex justify-center items-center gap-3"
-            >
-              <div className="bg-[#3b82e6] h-[14px] rounded-[18px] w-[56px]" />
-              <div className="bg-[#e4e7ec] rounded-full w-[14px] h-[14px]" />
-              <div className="bg-[#e4e7ec] rounded-full w-[14px] h-[14px]" />
-              <div className="bg-[#e4e7ec] rounded-full w-[14px] h-[14px]" />
             </motion.div>
           </motion.div>
         </div>

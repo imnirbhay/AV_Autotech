@@ -1,13 +1,12 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
-import contentData from '../../data/content.json';
-import imgRectangle7 from '../../assets/ba56d13b70a40e5606603b63d86c379e61a059e9.png';
-import imgRectangle8 from '../../assets/6fddbd2b03eab49a4f76b3a0e34d3e8a40d52a9f.png';
-import imgRectangle9 from '../../assets/ccdd92b1bfee9ab07bef167270461de5ba241a23.png';
+import { ArrowLeft, ChevronRight } from 'lucide-react';
+import { useServices } from '../../services/queries';
 
 export function ServicesPage() {
-  const serviceImages = [imgRectangle7, imgRectangle8, imgRectangle9];
+  const { data: servicesResponse = {} , isLoading, error } = useServices();
+  // Extract the actual services array from the response (like Services.tsx)
+  const services = servicesResponse?.data || [];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -24,13 +23,36 @@ export function ServicesPage() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut" }
+      transition: { duration: 0.6 }
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <p className="font-['Urbanist',sans-serif] text-[24px] text-[#171717]">Loading services...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <p className="font-['Urbanist',sans-serif] text-[24px] text-red-500">Error loading services</p>
+          <p className="font-['Montserrat',sans-serif] text-[16px] text-red-400 mt-4">{error instanceof Error ? error.message : 'Unknown error'}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white py-20 px-8">
       <div className="max-w-[1400px] mx-auto">
+        {/* Debug Info removed for production */}
+
         {/* Back Button */}
         <Link 
           to="/" 
@@ -64,66 +86,54 @@ export function ServicesPage() {
           animate="visible"
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {contentData.services.map((service, index) => (
-            <motion.div
-              key={service.id}
-              variants={cardVariants}
-              whileHover={{ 
-                scale: 1.03,
-                transition: { duration: 0.3 }
-              }}
-              className="group"
-            >
-              <div className="bg-white border-2 border-[#e4e7ec] hover:border-[#3b82e6] rounded-[32px] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                {/* Image */}
-                <div className="relative h-[300px] overflow-hidden">
-                  <motion.img
-                    src={serviceImages[index]}
-                    alt={service.title}
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.4 }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          {services && services.length > 0 ? (
+            services.map((service: any) => (
+              <motion.div
+                key={service._id}
+                variants={cardVariants}
+                className="group h-[400px]"
+              >
+                <div className="relative w-full h-full rounded-[32px] overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer bg-gradient-to-br from-[#3b82e6] to-[#1e3a8a]">
+                  {/* Background Image */}
+                  {service.image && (
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  )}
                   
-                  {/* Title Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="font-['Urbanist',sans-serif] font-bold text-[36px] text-white tracking-[-0.72px]">
+                  {/* Dark Overlay - Gets darker on hover */}
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/70 transition-colors duration-300" />
+
+                  {/* Content Container */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-8">
+                    {/* Service Title - Always visible */}
+                    <h3 className="font-['Urbanist',sans-serif] font-bold text-[40px] text-white tracking-[-0.8px] mb-4 group-hover:mb-4 transition-all duration-300">
                       {service.title}
                     </h3>
+
+                    {/* Description and Button - Hidden by default, shown on hover */}
+                    <div className="max-h-0 overflow-hidden group-hover:max-h-64 transition-all duration-500 ease-in-out">
+                      <p className="font-['Montserrat',sans-serif] text-[14px] text-white/90 leading-relaxed mb-6">
+                        {service.description}
+                      </p>
+                      
+                      {/* View Details Button */}
+                      <button className="inline-flex items-center gap-2 bg-[#3b82e6] hover:bg-white text-white hover:text-[#3b82e6] font-['Urbanist',sans-serif] font-semibold text-[14px] py-3 px-6 rounded-[20px] transition-all duration-300">
+                        View Details
+                        <ChevronRight size={18} />
+                      </button>
+                    </div>
                   </div>
                 </div>
-
-                {/* Content */}
-                <div className="p-8">
-                  <p className="font-['Montserrat',sans-serif] text-[16px] text-[#525252] leading-relaxed mb-6">
-                    {service.description}
-                  </p>
-                  
-                  {/* Features List */}
-                  <ul className="space-y-3 mb-6">
-                    <li className="flex items-center gap-3 text-[#171717] font-['Montserrat',sans-serif] text-[14px]">
-                      <div className="w-2 h-2 bg-[#3b82e6] rounded-full" />
-                      Professional expertise
-                    </li>
-                    <li className="flex items-center gap-3 text-[#171717] font-['Montserrat',sans-serif] text-[14px]">
-                      <div className="w-2 h-2 bg-[#3b82e6] rounded-full" />
-                      Quality assurance
-                    </li>
-                    <li className="flex items-center gap-3 text-[#171717] font-['Montserrat',sans-serif] text-[14px]">
-                      <div className="w-2 h-2 bg-[#3b82e6] rounded-full" />
-                      Timely delivery
-                    </li>
-                  </ul>
-
-                  {/* CTA Button */}
-                  <button className="w-full bg-[#3b82e6] hover:bg-[#2563eb] text-white font-['Urbanist',sans-serif] font-medium text-[16px] py-3 px-6 rounded-[24px] transition-colors duration-300">
-                    Learn More
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))
+          ) : (
+            <div className="col-span-full text-center py-12">
+              <p className="font-['Urbanist',sans-serif] text-[20px] text-[#525252]">No services available</p>
+            </div>
+          )}
         </motion.div>
 
         {/* Additional Services Section */}

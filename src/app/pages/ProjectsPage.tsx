@@ -1,21 +1,12 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
-import contentData from '../../data/content.json';
-import imgFrame26 from '../../assets/5cf28d4ff7cabdc9b27cdea620bb18818f2d6f54.png';
-import imgFrame28 from '../../assets/2e2146d6ef43febb94a0229038f623c9a714e196.png';
+import { useProjects } from '../../services/queries';
+import defaultProjectImg from '../../assets/5cf28d4ff7cabdc9b27cdea620bb18818f2d6f54.png';
 
 export function ProjectsPage() {
-  const projectImages = [imgFrame26, imgFrame28];
-  
-  // Create additional projects by duplicating with variations
-  const allProjects = [
-    ...contentData.projects,
-    { id: 3, title: "Metro Bridge", category: "Infrastructure" },
-    { id: 4, title: "Solar Plant", category: "Energy Systems" },
-    { id: 5, title: "Smart Factory", category: "Automation" },
-    { id: 6, title: "Water Treatment", category: "Environmental" }
-  ];
+  const { data: projectsResponse, isLoading, error } = useProjects();
+  const projects = Array.isArray(projectsResponse) ? projectsResponse : (projectsResponse?.data || []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -65,74 +56,83 @@ export function ProjectsPage() {
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid (API only) */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {allProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              variants={cardVariants}
-              whileHover={{ 
-                y: -15,
-                transition: { duration: 0.3 }
-              }}
-              className="group cursor-pointer"
-            >
-              <div className="relative rounded-[24px] h-[420px] overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                {/* Background Image */}
-                <img 
-                  alt={project.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-                  src={projectImages[index % 2]} 
-                />
-                
-                {/* Gradient Overlay */}
-                <div 
-                  className="absolute inset-0 opacity-70 group-hover:opacity-85 transition-opacity duration-300"
-                  style={{
-                    backgroundImage: "linear-gradient(192.536deg, rgba(0, 0, 0, 0) 33.316%, rgba(0, 0, 0, 0.416) 68.02%, rgba(0, 0, 0, 0.9) 103.58%)"
-                  }}
-                />
-
-                {/* Content */}
-                <div className="relative h-full p-6 flex flex-col justify-between">
-                  {/* Category Badge */}
-                  <div className="flex justify-between items-start">
-                    <span className="bg-[#3b82e6]/90 text-white px-4 py-2 rounded-[20px] font-['Montserrat',sans-serif] text-[14px] font-medium backdrop-blur-sm">
-                      {project.category}
-                    </span>
-                    
-                    {/* Arrow Button */}
-                    <motion.div
-                      whileHover={{ rotate: 45, scale: 1.15 }}
-                      className="bg-white border-[3px] border-[#3b82e6] rounded-full w-[50px] h-[50px] flex items-center justify-center shadow-lg"
-                    >
-                      <ArrowUpRight className="w-5 h-5 text-[#3b82e6]" />
-                    </motion.div>
+          {isLoading ? (
+            <div className="col-span-full text-center py-12">
+              <span className="text-lg text-gray-500">Loading projects...</span>
+            </div>
+          ) : error ? (
+            <div className="col-span-full text-center py-12">
+              <span className="text-lg text-red-500">Error loading projects</span>
+            </div>
+          ) : projects.length === 0 ? (
+            <div className="col-span-full text-center py-12">
+              <span className="text-lg text-gray-500">No projects available</span>
+            </div>
+          ) : (
+            projects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                variants={cardVariants}
+                whileHover={{ 
+                  y: -15,
+                  transition: { duration: 0.3 }
+                }}
+                className="group cursor-pointer"
+              >
+                <div className="relative rounded-[24px] h-[420px] overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                  {/* Background Image from API or fallback */}
+                  <img 
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                    src={project.image || project.imageUrl || defaultProjectImg} 
+                  />
+                  {/* Gradient Overlay */}
+                  <div 
+                    className="absolute inset-0 opacity-70 group-hover:opacity-85 transition-opacity duration-300"
+                    style={{
+                      backgroundImage: "linear-gradient(192.536deg, rgba(0, 0, 0, 0) 33.316%, rgba(0, 0, 0, 0.416) 68.02%, rgba(0, 0, 0, 0.9) 103.58%)"
+                    }}
+                  />
+                  {/* Content */}
+                  <div className="relative h-full p-6 flex flex-col justify-between">
+                    {/* Category Badge */}
+                    <div className="flex justify-between items-start">
+                      <span className="bg-[#3b82e6]/90 text-white px-4 py-2 rounded-[20px] font-['Montserrat',sans-serif] text-[14px] font-medium backdrop-blur-sm">
+                        {project.category}
+                      </span>
+                      {/* Arrow Button */}
+                      <motion.div
+                        whileHover={{ rotate: 45, scale: 1.15 }}
+                        className="bg-white border-[3px] border-[#3b82e6] rounded-full w-[50px] h-[50px] flex items-center justify-center shadow-lg"
+                      >
+                        <ArrowUpRight className="w-5 h-5 text-[#3b82e6]" />
+                      </motion.div>
+                    </div>
+                    {/* Title and Description */}
+                    <div>
+                      <motion.h3 
+                        className="font-['Urbanist',sans-serif] font-bold text-[48px] text-white leading-none tracking-[-0.96px] mb-3 group-hover:text-[#3b82e6] transition-colors duration-300"
+                      >
+                        {project.title}
+                      </motion.h3>
+                      <p className="font-['Montserrat',sans-serif] text-[14px] text-white/90 leading-relaxed">
+                        Professional engineering excellence in {project.category?.toLowerCase?.() || ''}
+                      </p>
+                    </div>
                   </div>
-
-                  {/* Title and Description */}
-                  <div>
-                    <motion.h3 
-                      className="font-['Urbanist',sans-serif] font-bold text-[48px] text-white leading-none tracking-[-0.96px] mb-3 group-hover:text-[#3b82e6] transition-colors duration-300"
-                    >
-                      {project.title}
-                    </motion.h3>
-                    <p className="font-['Montserrat',sans-serif] text-[14px] text-white/90 leading-relaxed">
-                      Professional engineering excellence in {project.category.toLowerCase()}
-                    </p>
-                  </div>
+                  {/* Hover Border Effect */}
+                  <div className="absolute inset-0 border-4 border-[#3b82e6] rounded-[24px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 </div>
-
-                {/* Hover Border Effect */}
-                <div className="absolute inset-0 border-4 border-[#3b82e6] rounded-[24px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))
+          )}
         </motion.div>
 
         {/* Stats Section */}

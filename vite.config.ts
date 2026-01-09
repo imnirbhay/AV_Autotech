@@ -16,4 +16,14 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  server: {
+    proxy: {
+      '/Prod': {
+        target: 'https://pwud2mn8yk.execute-api.us-east-1.amazonaws.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/Prod/, '/Prod'),
+      },
+    },
+  },
 })
+

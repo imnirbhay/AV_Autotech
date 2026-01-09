@@ -7,12 +7,16 @@ import imgFrame77 from '../../assets/3a9a692779ab823691c63ab78cdd908355c688dc.pn
 interface FormData {
   name: string;
   email: string;
+  phone: string;
+  service: string;
   message: string;
 }
 
 interface FormErrors {
   name?: string;
   email?: string;
+  phone?: string;
+  service?: string;
   message?: string;
 }
 
@@ -21,6 +25,8 @@ export function ContactCTA() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
+    phone: '',
+    service: '',
     message: ''
   });
   const [errors, setErrors] = useState<FormErrors>({});
@@ -35,6 +41,7 @@ export function ContactCTA() {
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
+
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
     }
@@ -43,6 +50,16 @@ export function ContactCTA() {
       newErrors.email = 'Email is required';
     } else if (!validateEmail(formData.email)) {
       newErrors.email = 'Please enter a valid email';
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+    } else if (!/^\d{10,15}$/.test(formData.phone.replace(/\D/g, ''))) {
+      newErrors.phone = 'Enter a valid phone number';
+    }
+
+    if (!formData.service.trim()) {
+      newErrors.service = 'Please select a service';
     }
 
     if (!formData.message.trim()) {
@@ -55,7 +72,7 @@ export function ContactCTA() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
@@ -63,18 +80,29 @@ export function ContactCTA() {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch('https://pwud2mn8yk.execute-api.us-east-1.amazonaws.com/Prod/Contact/AddContact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Simulate success (in a real app, this would be based on API response)
-    setSubmitStatus('success');
-    setIsSubmitting(false);
-    
-    // Reset form after success
-    setTimeout(() => {
-      setFormData({ name: '', email: '', message: '' });
-      setSubmitStatus('idle');
-    }, 3000);
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+        setTimeout(() => {
+          setSubmitStatus('idle');
+        }, 3000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -141,6 +169,7 @@ export function ContactCTA() {
               onSubmit={handleSubmit}
               className="w-full max-w-[800px] flex flex-col gap-6"
             >
+
               {/* Name Input */}
               <div>
                 <div className="relative">
@@ -175,9 +204,10 @@ export function ContactCTA() {
                 )}
               </div>
 
-              {/* Email Input */}
-              <div>
-                <div className="relative">
+              {/* Email & Phone Row */}
+              <div className="flex gap-[6px]">
+                {/* Email Input */}
+                <div className="relative w-1/2">
                   <input
                     type="email"
                     name="email"
@@ -197,20 +227,90 @@ export function ContactCTA() {
                       <CircleAlert className="w-5 h-5 text-red-500" />
                     </motion.div>
                   )}
+                  {errors.email && (
+                    <motion.p
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-red-400 text-[14px] mt-2 ml-2"
+                    >
+                      {errors.email}
+                    </motion.p>
+                  )}
                 </div>
-                {errors.email && (
+                {/* Phone Input */}
+                <div className="relative w-1/2">
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Phone Number"
+                    className={`w-full bg-white/10 backdrop-blur-sm border-2 ${
+                      errors.phone ? 'border-red-500' : 'border-white/20'
+                    } rounded-[16px] px-8 py-5 text-white text-[20px] placeholder:text-white/50 focus:outline-none focus:border-[#3b82e6] transition-all`}
+                  />
+                  {errors.phone && (
+                    <motion.div
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      className="absolute right-4 top-1/2 -translate-y-1/2"
+                    >
+                      <CircleAlert className="w-5 h-5 text-red-500" />
+                    </motion.div>
+                  )}
+                  {errors.phone && (
+                    <motion.p
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-red-400 text-[14px] mt-2 ml-2"
+                    >
+                      {errors.phone}
+                    </motion.p>
+                  )}
+                </div>
+              </div>
+
+              {/* Services Dropdown */}
+              <div>
+                <div className="relative">
+                  <select
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    className={`w-full bg-white/10 backdrop-blur-sm border-2 ${
+                      errors.service ? 'border-red-500' : 'border-white/20'
+                    } rounded-[16px] px-8 py-5 text-white/50 text-[20px] placeholder:text-white/50 focus:outline-none focus:border-[#3b82e6] transition-all appearance-none`}
+                  >
+                    <option value="" disabled className="bg-[#23272f] text-white/50">Select a Service</option>
+                    <option value="Mechanical" className="bg-[#23272f] text-white/50">Mechanical</option>
+                    <option value="Electrical" className="bg-[#23272f] text-white/50">Electrical</option>
+                    <option value="Civil" className="bg-[#23272f] text-white/50">Civil</option>
+                    <option value="Other" className="bg-[#23272f] text-white/50">Other</option>
+                  </select>
+                  {errors.service && (
+                    <motion.div
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      className="absolute right-4 top-1/2 -translate-y-1/2"
+                    >
+                      <CircleAlert className="w-5 h-5 text-red-500" />
+                    </motion.div>
+                  )}
+                </div>
+                {errors.service && (
                   <motion.p
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="text-red-400 text-[14px] mt-2 ml-2"
                   >
-                    {errors.email}
+                    {errors.service}
                   </motion.p>
                 )}
               </div>
 
-              {/* Message Textarea */}
-              <div>
+
+
+              
                 <div className="relative">
                   <textarea
                     name="message"
@@ -241,7 +341,6 @@ export function ContactCTA() {
                     {errors.message}
                   </motion.p>
                 )}
-              </div>
 
               {/* Submit Button */}
               <motion.button

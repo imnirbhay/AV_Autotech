@@ -3,11 +3,13 @@ import { useInView } from './hooks/useInView';
 import { ArrowUpRight } from 'lucide-react';
 import imgFrame26 from '../../assets/5cf28d4ff7cabdc9b27cdea620bb18818f2d6f54.png';
 import imgFrame28 from '../../assets/2e2146d6ef43febb94a0229038f623c9a714e196.png';
-import contentData from '../../data/content.json';
+import { useProjects } from '../../services/queries';
 
 export function Portfolio() {
   const { ref, isInView } = useInView();
   const projectImages = [imgFrame26, imgFrame28];
+  const { data: projectsResponse } = useProjects();
+  const projects = Array.isArray(projectsResponse) ? projectsResponse : (projectsResponse?.data || []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -24,7 +26,7 @@ export function Portfolio() {
     visible: {
       scale: 1,
       opacity: 1,
-      transition: { duration: 0.8, ease: "easeOut" }
+      transition: { duration: 0.8, ease: [0.42, 0, 0.58, 1] }
     }
   };
 
@@ -72,9 +74,10 @@ export function Portfolio() {
             variants={containerVariants}
             className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
           >
-            {contentData.projects.map((project, index) => (
+            {projects && Array.isArray(projects) && projects.length > 0 ? (
+              projects.map((project: any, index: number) => (
               <motion.div
-                key={project.id}
+                key={project._id}
                 variants={cardVariants}
                 whileHover={{ 
                   y: -10,
@@ -88,7 +91,7 @@ export function Portfolio() {
                   <img 
                     alt={project.title}
                     className="absolute inset-0 w-full h-full object-cover" 
-                    src={projectImages[index]} 
+                    src={project.image} 
                   />
                   
                   {/* Gradient Overlay */}
@@ -123,7 +126,12 @@ export function Portfolio() {
                   </div>
                 </div>
               </motion.div>
-            ))}
+              ))
+            ) : (
+              <div className="col-span-full text-center py-12">
+                <p className="font-['Montserrat',sans-serif] text-[16px] text-white/60">No projects available</p>
+              </div>
+            )}
           </motion.div>
 
           {/* See All Button */}
