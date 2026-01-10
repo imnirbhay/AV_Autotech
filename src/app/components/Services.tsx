@@ -1,3 +1,5 @@
+// Material UI Icon import
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { motion } from 'motion/react';
 import { ChevronRight } from 'lucide-react';
 import { useInView } from './hooks/useInView';
@@ -38,13 +40,7 @@ export function Services() {
   return (
     <section id="services" ref={ref} className="py-20 flex justify-center">
       <div className="w-full max-w-[1336px] mx-auto px-8">
-        <div className="bg-[#171717] rounded-[50px] p-[60px] relative overflow-hidden">
-          {/* Background Pattern */}
-          <img 
-            alt="" 
-            className="absolute inset-0 w-full h-full object-cover opacity-20 rounded-[50px]" 
-            src={imgFrame58} 
-          />
+        <div className="bg-[#F6FAFF] rounded-[50px] p-[60px] relative overflow-hidden">
 
           <motion.div
             variants={containerVariants}
@@ -55,15 +51,12 @@ export function Services() {
             {/* Header */}
             <motion.div 
               variants={cardVariants}
-              className="flex items-end justify-between"
+              className="flex flex-col items-center justify-center text-center"
             >
               <div className="font-['Urbanist',sans-serif] text-[64px] leading-none tracking-[-1.28px]">
-                <span className="font-semibold text-[#fcfcfd]">My </span>
-                <span className="font-bold text-white">Services</span>
+                <span className="font-semibold text-[#3B82E6]">Our </span>
+                <span className="font-bold text-[#344054]">Services</span>
               </div>
-              <p className="font-['Montserrat',sans-serif] text-[24px] text-white tracking-[-0.48px] max-w-[489px]">
-                Comprehensive engineering solutions tailored to meet your unique requirements and deliver excellence.
-              </p>
             </motion.div>
 
             {/* Service Cards */}
@@ -71,7 +64,7 @@ export function Services() {
               variants={containerVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center"
             >
               {services && Array.isArray(services) && services.length > 0 ? (
                 services.map((service: any) => (
@@ -90,8 +83,11 @@ export function Services() {
                         />
                       )}
                       
-                      {/* Dark Overlay - Gets darker on hover */}
-                      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/70 transition-colors duration-300" />
+                      {/* Dark Overlay - Gets darker on hover with linear gradient */}
+                      <div className="absolute inset-0 transition-all duration-300 pointer-events-none">
+                        <div className="w-full h-full bg-black/40 group-hover:opacity-0 transition-opacity duration-300" />
+                        <div className="w-full h-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{background: 'linear-gradient(180deg, rgba(0,0,0,0.6) 0%, #000 97.45%)'}} />
+                      </div>
 
                       {/* Content Container */}
                       <div className="absolute inset-0 flex flex-col justify-end p-8">
@@ -107,9 +103,8 @@ export function Services() {
                           </p>
                           
                           {/* View Details Button */}
-                          <button className="inline-flex items-center gap-2 bg-[#3b82e6] hover:bg-white text-white hover:text-[#3b82e6] font-['Urbanist',sans-serif] font-semibold text-[14px] py-3 px-6 rounded-[20px] transition-all duration-300">
+                          <button className="inline-flex items-center gap-2 bg-[#3b82e6] text-white font-['Urbanist',sans-serif] font-semibold text-[14px] py-3 px-6 rounded-[20px] transition-all duration-300">
                             View Details
-                            <ChevronRight size={18} />
                           </button>
                         </div>
                       </div>
@@ -122,18 +117,18 @@ export function Services() {
                 </div>
               )}
             </motion.div>
-
-            {/* Dots Navigation */}
-            <motion.div 
-              variants={cardVariants}
-              className="flex justify-center items-center gap-3"
-            >
-              <div className="bg-[#3b82e6] h-[14px] rounded-[18px] w-[56px]" />
-              <div className="bg-[#e4e7ec] rounded-full w-[14px] h-[14px]" />
-              <div className="bg-[#e4e7ec] rounded-full w-[14px] h-[14px]" />
-              <div className="bg-[#e4e7ec] rounded-full w-[14px] h-[14px]" />
-            </motion.div>
           </motion.div>
+        </div>
+        {/* See All Button overlapping bottom border */}
+        <div className="relative flex justify-center">
+          <a
+            href="/services"
+            className="absolute left-1/2 -translate-x-1/2 -bottom-8 inline-flex items-center justify-center bg-[#3B82E6] text-white font-['Urbanist',sans-serif] font-semibold text-[16px] w-[224px] h-[68px] rounded-[90px] opacity-100"
+            style={{ zIndex: 10 }}
+          >
+            See All
+            <ArrowForwardIcon className="ml-3" />
+          </a>
         </div>
       </div>
     </section>

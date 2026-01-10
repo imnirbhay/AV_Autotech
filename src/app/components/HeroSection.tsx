@@ -29,7 +29,7 @@ export function HeroSection() {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-12 px-4">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-36 pb-12 px-4">
       {/* Background Image */}
       <div className="absolute inset-0 pointer-events-none">
         <img 
@@ -126,14 +126,14 @@ export function HeroSection() {
             {/* Bottom CTA Buttons */}
             <motion.div 
               variants={itemVariants}
-              className="absolute bottom-4 md:bottom-12 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-md rounded-[50px] p-2 md:p-3 flex items-center gap-2 md:gap-3 shadow-xl w-[90%] max-w-[500px]"
+              className="absolute bottom-4 md:bottom-12 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-md rounded-[50px] p-2 md:p-3 flex items-center gap-2 md:gap-3 shadow-xl w-[50] max-w-[500px]"
             >
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-[#3b82e6] text-white px-4 md:px-8 py-3 md:py-4 rounded-[60px] font-['Urbanist',sans-serif] font-medium text-[18px] md:text-[25.692px] tracking-[-0.3854px] flex items-center gap-2 border border-[#d0d5dd]"
               >
-                Portfolio
+                Our Work
                 <ArrowUpRight className="w-4 h-4 md:w-6 md:h-6" />
               </motion.button>
               <motion.button
@@ -141,7 +141,7 @@ export function HeroSection() {
                 whileTap={{ scale: 0.95 }}
                 className="text-white px-4 md:px-8 py-3 md:py-4 rounded-[60px] font-['Urbanist',sans-serif] font-light text-[18px] md:text-[25.692px] tracking-[-0.3854px] hover:bg-white/10 transition-all"
               >
-                Hire me
+                Contact Us
               </motion.button>
             </motion.div>
           </motion.div>
