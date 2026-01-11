@@ -2,18 +2,16 @@ import { HeroSection } from '../components/HeroSection';
 import { Services } from '../components/Services';
 import { WhyChooseUs } from '../components/WhyChooseUs';
 import { Portfolio } from '../components/Portfolio';
-import { Testimonials } from '../components/Testimonials';
 import { ContactCTA } from '../components/ContactCTA';
 
 export function HomePage() {
   return (
-    <main>
+    <div className="min-h-screen w-full" style={{ backgroundColor: '#E5F0FF', zoom: 1 }}>
       <HeroSection />
       <Services />
       <WhyChooseUs />
       <Portfolio />
-      <Testimonials />
       <ContactCTA />
-    </main>
+    </div>
   );
 }

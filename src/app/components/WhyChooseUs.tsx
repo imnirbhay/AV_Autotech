@@ -50,8 +50,8 @@ export function WhyChooseUs() {
 
   return (
     <section id="about" ref={ref} className="py-20 flex justify-center">
-      <div className="w-full max-w-[1334px] mx-auto">
-        <div className="bg-[#f6faff] rounded-tl-[100px] rounded-bl-[100px] rounded-tr-[4px] rounded-br-[4px] p-20 relative overflow-hidden">
+      <div className="w-full max-w-[1336px] mx-auto px-8">
+        <div className="bg-[#f6faff] rounded-[100px] p-[60px] relative overflow-hidden">
           {/* Decorative Wave Pattern */}
           <motion.div 
             className="absolute top-0 left-0 w-full h-full opacity-20"
@@ -145,17 +145,30 @@ export function WhyChooseUs() {
               </div>
 
               {/* Contact Button */}
-              <motion.button
-                variants={itemVariants}
-                whileHover={{ scale: 1.05, boxShadow: "0px 8px 20px rgba(0,0,0,0.15)" }}
-                whileTap={{ scale: 0.95 }}
-                onClick={scrollToContact}
-                className="bg-white border-2 border-[#151515] rounded-[8px] px-10 md:px-13 py-5 md:py-6 shadow-[0px_4px_12px_0px_rgba(0,0,0,0.09)] self-center lg:self-start"
+              <div
+                className="flex flex-row items-center justify-center lg:justify-start gap-[124px] w-[500px] h-[128px] opacity-100 mt-4"
+                style={{ opacity: 1, angle: '0deg' }}
               >
-                <p className="font-['Montserrat',sans-serif] font-semibold text-[#151515] text-[24px] md:text-[28px] tracking-[-0.56px]">
-                  Contact Us
-                </p>
-              </motion.button>
+                <motion.button
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05, boxShadow: "0px 8px 20px rgba(0,0,0,0.15)" }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={scrollToContact}
+                  className="bg-white border-2 border-[#151515] rounded-[8px] px-6 py-3 shadow-[0px_4px_12px_0px_rgba(0,0,0,0.09)] flex flex-col items-center justify-center min-w-[168px] min-h-[70px]"
+                >
+                  <span className="font-['Montserrat',sans-serif] font-semibold text-[#151515] text-[16px]">Contact Us</span>
+                </motion.button>
+                <div
+                  className="flex flex-col items-center justify-center gap-3 opacity-100 rounded-[8px] py-3 w-[215px] h-[128px]"
+                  style={{ opacity: 1, angle: '0deg' }}
+                >
+                  <span className="font-['Montserrat',sans-serif] font-semibold text-[#151515] text-[28px] mb-3 bold-800">Contact Here</span>
+                  <div className="flex flex-row items-center justify-center gap-6">
+                    <img src="/src/assets/cd49b1e25e58eededaf41103636e4344d7190b9b.png" alt="Instamart" className="w-20 h-20 object-contain rounded-full" />
+                    <img src="/src/assets/2227.jpg" alt="Instagram" className="w-20 h-20 object-contain rounded-full" />
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         </div>

@@ -67,7 +67,7 @@ export function Services() {
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center"
             >
               {services && Array.isArray(services) && services.length > 0 ? (
-                services.map((service: any) => (
+                services.slice(0, 3).map((service: any) => (
                   <motion.div
                     key={service._id}
                     variants={cardVariants}
@@ -103,7 +103,7 @@ export function Services() {
                           </p>
                           
                           {/* View Details Button */}
-                          <button className="inline-flex items-center gap-2 bg-[#3b82e6] text-white font-['Urbanist',sans-serif] font-semibold text-[14px] py-3 px-6 rounded-[20px] transition-all duration-300">
+                          <button className="w-0 group-hover:w-full mx-auto flex items-center justify-center gap-2 bg-[#3b82e6] text-white font-['Urbanist',sans-serif] font-semibold text-[14px] py-3 px-6 rounded-[20px] transition-all duration-300 overflow-hidden">
                             View Details
                           </button>
                         </div>

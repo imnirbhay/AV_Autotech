@@ -4,7 +4,7 @@ import { ArrowUpRight } from 'lucide-react';
 import imgFrame26 from '../../assets/5cf28d4ff7cabdc9b27cdea620bb18818f2d6f54.png';
 import imgFrame28 from '../../assets/2e2146d6ef43febb94a0229038f623c9a714e196.png';
 import { useProjects } from '../../services/queries';
-
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 export function Portfolio() {
   const { ref, isInView } = useInView();
   const projectImages = [imgFrame26, imgFrame28];
@@ -75,7 +75,7 @@ export function Portfolio() {
             className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
           >
             {projects && Array.isArray(projects) && projects.length > 0 ? (
-              projects.map((project: any, index: number) => (
+              projects.slice(0, 2).map((project: any, index: number) => (
               <motion.div
                 key={project._id}
                 variants={cardVariants}
@@ -135,18 +135,16 @@ export function Portfolio() {
           </motion.div>
 
           {/* See All Button */}
-          <motion.div 
-            variants={cardVariants}
-            className="flex justify-center"
-          >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-[#3b82e6] text-white px-10 md:px-12 py-4 md:py-5 rounded-[60px] font-['Urbanist',sans-serif] font-medium text-[24px] md:text-[28px] tracking-[-0.56px] shadow-lg hover:shadow-xl transition-all"
+          <div className="relative flex justify-center mt-4">
+            <a
+              href="/projects"
+              className="inline-flex items-center justify-center bg-[#3B82E6] text-white font-['Urbanist',sans-serif] font-semibold text-[16px] w-[224px] h-[68px] rounded-[90px] opacity-100 shadow-lg hover:shadow-xl transition-all"
+              style={{ zIndex: 10 }}
             >
               See All
-            </motion.button>
-          </motion.div>
+              <ArrowForwardIcon className="ml-3" style={{ fontSize: 24 }} />
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>
