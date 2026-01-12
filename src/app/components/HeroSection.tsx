@@ -32,7 +32,7 @@ export function HeroSection() {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-36 pb-12 px-4">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-0 px-4">
       {/* Background Image */}
       <div className="absolute inset-0 pointer-events-none">
         <img 
@@ -46,10 +46,10 @@ export function HeroSection() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 w-full max-w-[1440px] mx-auto px-4 md:px-8 flex flex-col items-center gap-8 md:gap-12"
+        className="relative z-10 w-full max-w-[1440px] mx-auto px-4 md:px-8 flex flex-col items-center"
       >
-        {/* Top Section - Hello + Title + Quote */}
-        <motion.div variants={itemVariants} className="flex flex-col items-center gap-6 md:gap-10 text-center">
+        {/* Top Section - Hello + Title */}
+        <motion.div variants={itemVariants} className="relative z-30 flex flex-col items-center gap-2 md:gap-3 text-center mb-[-20px] md:mb-[-30px] lg:mb-[-40px]">
           {/* Hello Badge */}
           <div className="relative inline-flex">
             <div className="bg-white/10 border-2 border-[#171717] rounded-[39px] px-5 md:px-7 py-2 md:py-3">
@@ -66,12 +66,20 @@ export function HeroSection() {
           </div>
 
           {/* Main Title */}
-          <div className="font-['Urbanist',sans-serif] font-semibold text-[#171717] max-w-[913px]">
-            <p className="text-[48px] md:text-[72px] lg:text-[95px] leading-none mb-2 tracking-[-1.9px]">
+          <div className="font-['Urbanist',sans-serif] text-[#171717] max-w-[913px] text-center relative">
+            <p className="text-[48px] md:text-[72px] lg:text-[95px] leading-[100%] mb-2 tracking-[-0.02em]">
               <span className="font-medium">{hero.title}</span>
             </p>
-            <p className="text-[48px] md:text-[72px] lg:text-[95px] leading-none tracking-[-1.9px]">
-              <span className="font-bold text-[#3b82e6]">{hero.highlightedTitle}</span>{' '}
+            <p className="text-[48px] md:text-[72px] lg:text-[95px] leading-[100%] tracking-[-0.02em] relative inline-block">
+              <span className="font-semibold text-[#3b82e6] relative inline-block">
+                {hero.highlightedTitle}
+                {/* Decorative SVG Element at bottom left of E */}
+                <span className="absolute -bottom-4 -left-8 md:-bottom-6 md:-left-12 w-8 h-8 md:w-12 md:h-12 rotate-180">
+                  <svg className="w-full h-full" fill="none" viewBox="0 0 76.8909 79.505">
+                    <path d={svgPaths.p3e7cd7c0} stroke="#3B82E6" strokeLinecap="round" strokeLinejoin="round" strokeWidth="5" />
+                  </svg>
+                </span>
+              </span>{' '}
               <span className="font-medium">{hero.subtitle}</span>
             </p>
           </div>
@@ -79,6 +87,7 @@ export function HeroSection() {
 
         {/* Main Hero Image + Content Container */}
         <div className="relative w-full flex items-center justify-center">
+
           {/* Left Quote */}
           <motion.div 
             variants={itemVariants}
@@ -100,17 +109,6 @@ export function HeroSection() {
             variants={itemVariants}
             className="relative w-full max-w-[952px]"
           >
-            {/* Decorative SVG Elements */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute -top-8 left-4 md:left-8 w-12 h-12 md:w-20 md:h-20"
-            >
-              <svg className="w-full h-full" fill="none" viewBox="0 0 76.8909 79.505">
-                <path d={svgPaths.p3e7cd7c0} stroke="#3B82E6" strokeLinecap="round" strokeLinejoin="round" strokeWidth="5" />
-              </svg>
-            </motion.div>
-
             {/* Main Hero Image */}
             <div className="w-full aspect-[3/2] relative">
               <motion.img
@@ -164,7 +162,7 @@ export function HeroSection() {
           {/* Right Stats */}
           <motion.div 
             variants={itemVariants}
-            className="absolute right-4 top-1/3 z-20 bg-white/80 backdrop-blur-sm rounded-3xl p-6 md:p-8 shadow-xl hidden xl:flex flex-col items-end gap-6"
+            className="absolute right-4 top-1/3 z-20 rounded-3xl p-6 md:p-8 hidden md:flex flex-col items-start gap-2"
           >
             {/* Star Rating */}
             <div className="flex gap-2">
@@ -177,19 +175,19 @@ export function HeroSection() {
                   className="w-10 h-10 md:w-12 md:h-12"
                 >
                   <svg className="w-full h-full" fill="none" viewBox="0 0 48 48">
-                    <path d={svgPaths.p2b4c0200} fill="#3B82E6" />
+                    <path d={svgPaths.p2b4c0200} fill="#FFC107" />
                   </svg>
                 </motion.div>
               ))}
             </div>
             
             {/* Experience */}
-            <div className="text-right">
-              <p className="font-['Urbanist',sans-serif] font-bold text-[56px] md:text-[72px] text-[#171717] leading-none tracking-[-1.44px]">
-                {hero.experience.years}
-              </p>
+            <div className="text-left">
               <p className="font-['Montserrat',sans-serif] text-[32px] md:text-[42px] text-[#171717] tracking-[-0.84px]">
                 {hero.experience.label}
+              </p>
+              <p className="font-['Urbanist',sans-serif] font-bold text-[56px] md:text-[72px] text-[#171717] leading-none tracking-[-1.44px]">
+                {hero.experience.years}
               </p>
             </div>
           </motion.div>

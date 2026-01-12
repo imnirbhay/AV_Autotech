@@ -33,7 +33,7 @@ export function Testimonials() {
 
   return (
     <section ref={ref} className="py-20 flex justify-center bg-gradient-to-b from-white to-gray-50">
-      <div className="w-full max-w-[1336px] mx-auto px-8">
+      <div className="w-full max-w-[1440px] mx-auto px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"

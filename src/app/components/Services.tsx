@@ -4,19 +4,10 @@ import { motion } from 'motion/react';
 import { ChevronRight } from 'lucide-react';
 import { useInView } from './hooks/useInView';
 import { useServices } from '../../services/queries';
-import imgFrame58 from '../../assets/3a75595023a84fef860d0682e77b0cec39ece463.png';
 
 export function Services() {
   const { ref, isInView } = useInView();
-  const { data: servicesResponse = {} } = useServices();
-
-  // Extract the actual services array from the response
-  const services = servicesResponse?.data || [];
-
-  // Debug log
-  console.log('Services Response:', servicesResponse);
-  console.log('Services Array:', services);
-  console.log('Length:', services?.length);
+  const { data: services = [] } = useServices();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -38,8 +29,8 @@ export function Services() {
   };
 
   return (
-    <section id="services" ref={ref} className="py-20 flex justify-center">
-      <div className="w-full max-w-[1336px] mx-auto px-8">
+    <section id="services" ref={ref} className="py-12 flex justify-center">
+      <div className="w-full max-w-[1440px] mx-auto px-8">
         <div className="bg-[#F6FAFF] rounded-[50px] p-[60px] relative overflow-hidden">
 
           <motion.div
@@ -103,7 +94,7 @@ export function Services() {
                           </p>
                           
                           {/* View Details Button */}
-                          <button className="w-0 group-hover:w-full mx-auto flex items-center justify-center gap-2 bg-[#3b82e6] text-white font-['Urbanist',sans-serif] font-semibold text-[14px] py-3 px-6 rounded-[20px] transition-all duration-300 overflow-hidden">
+                          <button className="w-0 group-hover:w-full mx-auto flex items-center justify-center gap-2 bg-[#3b82e6] text-white font-['Urbanist',sans-serif] font-semibold text-[14px] py-3 px-6 rounded-[12px] transition-all duration-300 overflow-hidden">
                             View Details
                           </button>
                         </div>

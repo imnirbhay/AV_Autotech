@@ -2,15 +2,11 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { useInView } from './hooks/useInView';
 import { ArrowUpRight } from 'lucide-react';
-import imgFrame26 from '../../assets/5cf28d4ff7cabdc9b27cdea620bb18818f2d6f54.png';
-import imgFrame28 from '../../assets/2e2146d6ef43febb94a0229038f623c9a714e196.png';
 import { useProjects } from '../../services/queries';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 export function Portfolio() {
   const { ref, isInView } = useInView();
-  const projectImages = [imgFrame26, imgFrame28];
-  const { data: projectsResponse } = useProjects();
-  const projects = Array.isArray(projectsResponse) ? projectsResponse : (projectsResponse?.data || []);
+  const { data: projects = [] } = useProjects();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -32,8 +28,8 @@ export function Portfolio() {
   };
 
   return (
-    <section id="projects" ref={ref} className="py-20 flex justify-center px-4 md:px-8">
-      <div className="w-full max-w-[1400px] mx-auto">
+    <section id="projects" ref={ref} className="py-12 flex justify-center px-4 md:px-8">
+      <div className="w-full max-w-[1440px] mx-auto">
         <motion.div
           variants={containerVariants}
           initial="hidden"

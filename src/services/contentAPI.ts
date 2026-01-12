@@ -2,17 +2,23 @@ import { apiClient } from './api';
 
 // Define types for API responses
 export interface Service {
-  id: number;
+  _id: string;
   title: string;
   description: string;
-  imageUrl?: string;
+  image: string;
+  type: string;
 }
 
 export interface Project {
-  id: number;
+  _id: string;
   title: string;
-  category: string;
+  description: string;
+  image: string;
+  type: string;
 }
+
+// Partner API returns an array of image URLs (strings)
+export type Partner = string;
 
 export interface Testimonial {
   id: number;
@@ -54,12 +60,12 @@ export interface ContentData {
 // API endpoints
 export const contentAPI = {
   // Get all services
-  getServices: () => apiClient.get<Service[]>('/ServicesAndProjects/GetAllServicesOrProjects', {
+  getServices: () => apiClient.get('/ServicesAndProjects/GetAllServicesOrProjects', {
     params: { type: 'service' }
   }),
 
   // Get all projects
-  getProjects: () => apiClient.get<Project[]>('/ServicesAndProjects/GetAllServicesOrProjects', {
+  getProjects: () => apiClient.get('/ServicesAndProjects/GetAllServicesOrProjects', {
     params: { type: 'project' }
   }),
 
@@ -69,6 +75,7 @@ export const contentAPI = {
   getWhyChooseUs: () => apiClient.get('/content/why-choose-us'),
   getFooter: () => apiClient.get('/content/footer'),
   getHomePageVideo: () => apiClient.get('/HomePageVideo/GetHomePageVideo'),
+  getPartners: () => apiClient.get('/Partners/GetAllPartners'),
 };
 
 export default contentAPI;

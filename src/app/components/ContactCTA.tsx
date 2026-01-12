@@ -144,8 +144,8 @@ export function ContactCTA() {
   };
 
   return (
-    <section id="contact" ref={ref} className="py-20 flex justify-center">
-      <div className="w-full max-w-[1336px] mx-auto px-8">
+    <section id="contact" ref={ref} className="py-12 flex justify-center">
+      <div className="w-full max-w-[1440px] mx-auto px-8">
         <div className="bg-[#171717] rounded-[40px] relative overflow-hidden">
           {/* Background Image */}
           <img 
@@ -191,7 +191,7 @@ export function ContactCTA() {
                     placeholder="Your Name"
                     className={`w-full bg-white/10 backdrop-blur-sm border-2 ${
                       errors.name ? 'border-red-500' : 'border-white/20'
-                    } rounded-[16px] px-8 py-5 text-white text-[20px] placeholder:text-white/50 focus:outline-none focus:border-[#3b82e6] transition-all`}
+                    } rounded-[16px] px-8 py-3.5 text-white text-[20px] placeholder:text-white/50 focus:outline-none focus:border-[#3b82e6] transition-all`}
                   />
                   {errors.name && (
                     <motion.div
@@ -226,7 +226,7 @@ export function ContactCTA() {
                     placeholder="Your Email"
                     className={`w-full bg-white/10 backdrop-blur-sm border-2 ${
                       errors.email ? 'border-red-500' : 'border-white/20'
-                    } rounded-[16px] px-8 py-5 text-white text-[20px] placeholder:text-white/50 focus:outline-none focus:border-[#3b82e6] transition-all`}
+                    } rounded-[16px] px-8 py-3.5 text-white text-[20px] placeholder:text-white/50 focus:outline-none focus:border-[#3b82e6] transition-all`}
                   />
                   {errors.email && (
                     <motion.div
@@ -257,7 +257,7 @@ export function ContactCTA() {
                     placeholder="Phone Number"
                     className={`w-full bg-white/10 backdrop-blur-sm border-2 ${
                       errors.phone ? 'border-red-500' : 'border-white/20'
-                    } rounded-[16px] px-8 py-5 text-white text-[20px] placeholder:text-white/50 focus:outline-none focus:border-[#3b82e6] transition-all`}
+                    } rounded-[16px] px-8 py-3.5 text-white text-[20px] placeholder:text-white/50 focus:outline-none focus:border-[#3b82e6] transition-all`}
                   />
                   {errors.phone && (
                     <motion.div
@@ -290,7 +290,7 @@ export function ContactCTA() {
                     disabled={servicesLoading}
                     className={`w-full bg-white/10 backdrop-blur-sm border-2 ${
                       errors.service ? 'border-red-500' : 'border-white/20'
-                    } rounded-[16px] px-8 py-5 text-white/50 text-[20px] placeholder:text-white/50 focus:outline-none focus:border-[#3b82e6] transition-all appearance-none`}
+                    } rounded-[16px] px-8 py-3.5 text-white/50 text-[20px] placeholder:text-white/50 focus:outline-none focus:border-[#3b82e6] transition-all appearance-none`}
                   >
                     <option value="" disabled className="bg-[#23272f] text-white/50">
                       {servicesLoading ? 'Loading services...' : 'Select a Service'}
@@ -340,7 +340,7 @@ export function ContactCTA() {
                     rows={3}
                     className={`w-full bg-white/10 backdrop-blur-sm border-2 ${
                       errors.message ? 'border-red-500' : 'border-white/20'
-                    } rounded-[16px] px-8 py-3 text-white text-[18px] placeholder:text-white/50 focus:outline-none focus:border-[#3b82e6] transition-all resize-none`}
+                    } rounded-[16px] px-8 py-2 text-white text-[18px] placeholder:text-white/50 focus:outline-none focus:border-[#3b82e6] transition-all resize-none`}
                   />
                   {errors.message && (
                     <motion.div
@@ -391,7 +391,7 @@ export function ContactCTA() {
                     Message Sent Successfully!
                   </span>
                 ) : (
-                  'Send Message'
+                  'Contact Us'
                 )}
               </motion.button>
             </motion.form>

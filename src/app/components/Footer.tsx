@@ -24,7 +24,7 @@ export function Footer() {
 
       <div className="relative z-10">
         {/* Main Footer Content */}
-        <div className="max-w-[1336px] mx-auto px-8 py-20">
+        <div className="max-w-[1440px] mx-auto px-8 py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Column 1 - Brand */}
             <motion.div
@@ -153,7 +153,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10">
-          <div className="max-w-[1336px] mx-auto px-8 py-8">
+          <div className="max-w-[1440px] mx-auto px-8 py-8">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}

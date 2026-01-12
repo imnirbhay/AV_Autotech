@@ -1,5 +1,5 @@
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
-import contentAPI, { ContentData, Service, Project } from './contentAPI';
+import contentAPI, { ContentData, Service, Project, Partner } from './contentAPI';
 
 // Query keys for React Query
 export const contentQueryKeys = {
@@ -11,13 +11,18 @@ export const contentQueryKeys = {
   whyChooseUs: ['content', 'why-choose-us'] as const,
   footer: ['content', 'footer'] as const,
   homePageVideo: ['content', 'home-page-video'] as const,
+  partners: ['content', 'partners'] as const,
 };
 
 // Custom hooks for fetching content
 export const useServices = (): UseQueryResult<Service[], unknown> => {
   return useQuery({
     queryKey: contentQueryKeys.services,
-    queryFn: () => contentAPI.getServices(),
+    queryFn: async () => {
+      const response = await contentAPI.getServices();
+      // API returns { message: string, data: Service[] }
+      return response?.data || [];
+    },
     staleTime: 1000 * 60 * 5, // 5 minutes
   });
 };
@@ -25,7 +30,11 @@ export const useServices = (): UseQueryResult<Service[], unknown> => {
 export const useProjects = (): UseQueryResult<Project[], unknown> => {
   return useQuery({
     queryKey: contentQueryKeys.projects,
-    queryFn: () => contentAPI.getProjects(),
+    queryFn: async () => {
+      const response = await contentAPI.getProjects();
+      // API returns { message: string, data: Project[] }
+      return response?.data || [];
+    },
     staleTime: 1000 * 60 * 5,
   });
 };
@@ -66,6 +75,17 @@ export const useHomePageVideo = () => {
   return useQuery({
     queryKey: contentQueryKeys.homePageVideo,
     queryFn: () => contentAPI.getHomePageVideo(),
+    staleTime: 1000 * 60 * 5,
+  });
+};
+
+export const usePartners = (): UseQueryResult<string[], unknown> => {
+  return useQuery({
+    queryKey: contentQueryKeys.partners,
+    queryFn: async () => {
+      const response = await contentAPI.getPartners();
+      return Array.isArray(response) ? response : [];
+    },
     staleTime: 1000 * 60 * 5,
   });
 };

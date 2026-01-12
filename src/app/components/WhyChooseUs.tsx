@@ -49,9 +49,9 @@ export function WhyChooseUs() {
   };
 
   return (
-    <section id="about" ref={ref} className="py-20 flex justify-center">
-      <div className="w-full max-w-[1336px] mx-auto px-8">
-        <div className="bg-[#f6faff] rounded-[100px] p-[60px] relative overflow-hidden">
+    <section id="about" ref={ref} className="py-12 flex justify-center">
+      <div className="w-full max-w-[1440px] mx-auto px-8">
+        <div className="bg-[#f6faff] rounded-[50px] p-[60px] relative overflow-hidden">
           {/* Decorative Wave Pattern */}
           <motion.div 
             className="absolute top-0 left-0 w-full h-full opacity-20"
@@ -79,25 +79,23 @@ export function WhyChooseUs() {
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 md:gap-16"
+            className="relative z-10 flex flex-row items-center gap-8"
           >
             {/* Left - Image */}
-            <motion.div variants={imageVariants} className="relative flex-shrink-0 w-full lg:w-auto flex justify-center">
+            <motion.div variants={imageVariants} className="relative flex-shrink-0 w-[456px] h-[574px] flex items-center justify-center">
               {/* Shadow/Blur effect */}
-              <div className="absolute left-1/2 -translate-x-1/2 md:left-28 md:translate-x-0 top-32 w-[228px] h-[390px] blur-3xl bg-black/25 rounded-[50px]" />
+              <div className="absolute left-1/2 -translate-x-1/2 top-32 w-[280px] h-[450px] blur-3xl bg-black/25 rounded-[50px]" />
               
-              {/* Background shape */}
+              {/* Background shape with image */}
               <motion.div 
-                className="relative"
+                className="relative z-10"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="bg-[rgba(59,130,230,0.4)] rounded-[50px] w-[300px] md:w-[387px] h-[380px] md:h-[494px]" />
-                
-                {/* Image */}
-                <div className="absolute inset-0 flex items-center justify-center">
+                <div className="bg-[rgba(59,130,230,0.4)] rounded-[50px] w-[420px] h-[530px] flex items-center justify-center">
+                  {/* Image directly inside blue background */}
                   <motion.div 
-                    className="w-[300px] md:w-[388px] h-[450px] md:h-[583px] rounded-[20px] overflow-hidden shadow-2xl"
+                    className="w-[390px] h-[500px] rounded-[20px] overflow-hidden"
                     whileHover={{ y: -10 }}
                     transition={{ duration: 0.3 }}
                   >
@@ -112,21 +110,21 @@ export function WhyChooseUs() {
             </motion.div>
 
             {/* Right - Content */}
-            <motion.div variants={itemVariants} className="flex-1 flex flex-col gap-8 md:gap-12 text-center lg:text-left">
+            <motion.div variants={itemVariants} className="flex-1 flex flex-col gap-6 text-left items-start">
               {/* Title */}
-              <div className="font-['Urbanist',sans-serif] text-[40px] md:text-[56px] lg:text-[64px] leading-none tracking-[-1.28px]">
+              <div className="font-['Urbanist',sans-serif] text-[56px] leading-none tracking-[-1.28px] whitespace-nowrap">
                 <span className="font-semibold text-[#344054]">Why </span>
-                <span className="font-bold text-[#3b82e6]">Choose Us </span>
+                <span className="font-bold text-[#3b82e6]">Choose Us</span>
                 <span className="text-[#344054]">?</span>
               </div>
 
               {/* Description */}
-              <p className="font-['Montserrat',sans-serif] text-[18px] md:text-[24px] text-[#1d2939] tracking-[-0.48px] max-w-[567px] mx-auto lg:mx-0">
+              <p className="font-['Montserrat',sans-serif] text-[20px] text-[#1d2939] tracking-[-0.48px] max-w-[500px]">
                 {whyChooseUs.description}
               </p>
 
               {/* Stats */}
-              <div className="flex flex-col sm:flex-row gap-8 sm:gap-10 justify-center lg:justify-start">
+              <div className="flex flex-row gap-10 justify-start">
                 {whyChooseUs.stats.map((stat, index) => (
                   <motion.div
                     key={index}
@@ -146,26 +144,22 @@ export function WhyChooseUs() {
 
               {/* Contact Button */}
               <div
-                className="flex flex-row items-center justify-center lg:justify-start gap-[124px] w-[500px] h-[128px] opacity-100 mt-4"
-                style={{ opacity: 1, angle: '0deg' }}
+                className="flex flex-row items-end justify-start gap-16 w-full mt-2"
               >
                 <motion.button
                   variants={itemVariants}
                   whileHover={{ scale: 1.05, boxShadow: "0px 8px 20px rgba(0,0,0,0.15)" }}
                   whileTap={{ scale: 0.95 }}
                   onClick={scrollToContact}
-                  className="bg-white border-2 border-[#151515] rounded-[8px] px-6 py-3 shadow-[0px_4px_12px_0px_rgba(0,0,0,0.09)] flex flex-col items-center justify-center min-w-[168px] min-h-[70px]"
+                  className="bg-white border-2 border-[#151515] rounded-[8px] px-6 py-3 shadow-[0px_4px_12px_0px_rgba(0,0,0,0.09)] flex items-center justify-center min-w-[168px] h-[70px]"
                 >
                   <span className="font-['Montserrat',sans-serif] font-semibold text-[#151515] text-[16px]">Contact Us</span>
                 </motion.button>
-                <div
-                  className="flex flex-col items-center justify-center gap-3 opacity-100 rounded-[8px] py-3 w-[215px] h-[128px]"
-                  style={{ opacity: 1, angle: '0deg' }}
-                >
-                  <span className="font-['Montserrat',sans-serif] font-semibold text-[#151515] text-[28px] mb-3 bold-800">Contact Here</span>
-                  <div className="flex flex-row items-center justify-center gap-6">
-                    <img src="/src/assets/cd49b1e25e58eededaf41103636e4344d7190b9b.png" alt="Instamart" className="w-20 h-20 object-contain rounded-full" />
-                    <img src="/src/assets/2227.jpg" alt="Instagram" className="w-20 h-20 object-contain rounded-full" />
+                <div className="flex flex-col items-center justify-end gap-2">
+                  <span className="font-['Montserrat',sans-serif] font-semibold text-[#151515] text-[24px]">Contact Here</span>
+                  <div className="flex flex-row items-center justify-center gap-2">
+                    <img src="/src/assets/cd49b1e25e58eededaf41103636e4344d7190b9b.png" alt="Instamart" className="w-16 h-16 object-contain rounded-full" />
+                    <img src="/src/assets/2227.jpg" alt="Instagram" className="w-16 h-16 object-contain rounded-full" />
                   </div>
                 </div>
               </div>

@@ -7,7 +7,7 @@ export function VideoPlayer() {
   if (isLoading) {
     return (
       <section className="w-full border-t border-gray-200">
-        <div className="w-full max-w-[1514px] mx-auto px-[71px] pt-[60px] flex justify-center items-center" style={{ height: 400 }}>
+        <div className="w-full max-w-[1514px] mx-auto px-[71px] pt-0 flex justify-center items-center" style={{ height: 400 }}>
           <div className="w-full h-full bg-gray-200 rounded-2xl animate-pulse flex items-center justify-center">
             <p className="text-gray-400">Loading video...</p>
           </div>
@@ -21,7 +21,7 @@ export function VideoPlayer() {
   if (error || !videoUrl) {
     return (
       <section className="w-full border-t border-gray-200">
-        <div className="w-full max-w-[1514px] mx-auto px-[71px] pt-[60px] flex justify-center items-center" style={{ height: 400 }}>
+        <div className="w-full max-w-[1514px] mx-auto px-[71px] pt-0 flex justify-center items-center" style={{ height: 400 }}>
           <div className="w-full h-full bg-gray-100 rounded-2xl flex items-center justify-center border-2 border-dashed border-gray-300">
             <p className="text-gray-500">Video not available</p>
           </div>
@@ -37,7 +37,7 @@ export function VideoPlayer() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="w-full max-w-[1514px] mx-auto px-[71px] pt-[60px] flex justify-center items-center gap-[60px]"
+        className="w-full mx-auto px-full pt-0 flex justify-center items-center gap-[60px]"
         style={{ height: 400 }}
       >
         <video

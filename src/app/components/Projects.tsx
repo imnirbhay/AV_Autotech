@@ -2,16 +2,10 @@ import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import { useInView } from './hooks/useInView';
 import { useProjects } from '../../services/queries';
-import imgFrame26 from '../../assets/5cf28d4ff7cabdc9b27cdea620bb18818f2d6f54.png';
-import imgFrame28 from '../../assets/2e2146d6ef43febb94a0229038f623c9a714e196.png';
 
 export function Projects() {
   const { ref, isInView } = useInView();
-  const { data: projectsResponse = {} } = useProjects();
-
-  // Extract the actual projects array from the response
-  const projects = projectsResponse?.data || [];
-  const projectImages = [imgFrame26, imgFrame28];
+  const { data: projects = [] } = useProjects();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -33,8 +27,8 @@ export function Projects() {
   };
 
   return (
-    <section id="projects" ref={ref} className="py-20 flex justify-center">
-      <div className="w-full max-w-[1336px] mx-auto px-8">
+    <section id="projects" ref={ref} className="py-12 flex justify-center">
+      <div className="w-full max-w-[1440px] mx-auto px-8">
         <div className="bg-[#171717] rounded-[50px] p-[60px] relative overflow-hidden">
           <motion.div
             variants={containerVariants}
@@ -66,14 +60,14 @@ export function Projects() {
               {projects && Array.isArray(projects) && projects.length > 0 ? (
                 projects.map((project: any, index: number) => (
                   <motion.div
-                    key={project.id}
+                    key={project._id}
                     variants={cardVariants}
                     className="group"
                   >
                     <div className="relative h-[400px] rounded-[32px] overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer bg-gradient-to-br from-[#3b82e6] to-[#1e3a8a]">
                       {/* Background Image */}
                       <img
-                        src={projectImages[index % 2]}
+                        src={project.image}
                         alt={project.title}
                         className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
