@@ -65,10 +65,12 @@ export function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="fixed top-4 md:top-10 left-1/2 -translate-x-1/2         className="fixed top-4 md:top-10 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-[90%] max-w-[1280px] h-[86px]"
+        className="fixed top-4 md:top-10 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-[90%] max-w-[1280px] h-[86px]"
       >
         <div className="bg-[#171717] rounded-[50px] shadow-[0px_4px_8px_0px_rgba(0,37,88,0.2)] px-4 md:px-10 flex items-center justify-between h-[86px]">
-cale: 1.05 }}
+          {/* Logo */}
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
             className="font-['Wallpoet',sans-serif] text-[24px] md:text-[32px] text-white tracking-[-0.48px] cursor-pointer"
             onClick={() => scrollToSection('home')}
           >
