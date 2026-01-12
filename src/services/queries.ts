@@ -10,6 +10,7 @@ export const contentQueryKeys = {
   testimonials: ['content', 'testimonials'] as const,
   whyChooseUs: ['content', 'why-choose-us'] as const,
   footer: ['content', 'footer'] as const,
+  homePageVideo: ['content', 'home-page-video'] as const,
 };
 
 // Custom hooks for fetching content
@@ -57,6 +58,14 @@ export const useFooter = () => {
   return useQuery({
     queryKey: contentQueryKeys.footer,
     queryFn: () => contentAPI.getFooter(),
+    staleTime: 1000 * 60 * 5,
+  });
+};
+
+export const useHomePageVideo = () => {
+  return useQuery({
+    queryKey: contentQueryKeys.homePageVideo,
+    queryFn: () => contentAPI.getHomePageVideo(),
     staleTime: 1000 * 60 * 5,
   });
 };

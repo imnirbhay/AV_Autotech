@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { useInView } from './hooks/useInView';
 import { ArrowUpRight } from 'lucide-react';
@@ -22,11 +23,11 @@ export function Portfolio() {
   };
 
   const cardVariants = {
-    hidden: { scale: 0.8, opacity: 0 },
+    hidden: { scale: 0.95, opacity: 0 },
     visible: {
       scale: 1,
       opacity: 1,
-      transition: { duration: 0.8, ease: [0.42, 0, 0.58, 1] }
+      transition: { duration: 0.7, ease: [0.42, 0, 0.58, 1] }
     }
   };
 
@@ -42,31 +43,12 @@ export function Portfolio() {
           {/* Header */}
           <motion.div 
             variants={cardVariants}
-            className="flex flex-col md:flex-row items-center justify-between gap-6"
+            className="flex flex-col items-center justify-center gap-6"
           >
-            <div className="font-['Urbanist',sans-serif] font-bold text-[32px] md:text-[48px] lg:text-[64px] leading-tight text-[#344054] tracking-[-1.28px] text-center md:text-left">
+            <div className="font-['Urbanist',sans-serif] font-bold text-[32px] md:text-[48px] lg:text-[64px] leading-tight text-[#344054] tracking-[-1.28px] text-center">
               <span className="font-semibold">Lets have a look at my </span>
               <span className="text-[#3b82e6]">Previous Work</span>
             </div>
-
-            {/* Arrow Button */}
-            <motion.div
-              whileHover={{ rotate: -45, scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="bg-white border-[3.783px] border-[#3b82e6] rounded-full w-[60px] h-[60px] flex items-center justify-center cursor-pointer shadow-lg flex-shrink-0"
-            >
-              <div className="w-8 h-8 flex items-center justify-center">
-                <svg className="w-full h-full" fill="none" viewBox="0 0 32.155 32.155">
-                  <path 
-                    d="M8 24L24 8M24 8H8M24 8V24" 
-                    stroke="#3B82E6" 
-                    strokeWidth="3" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* Project Cards */}
@@ -136,14 +118,14 @@ export function Portfolio() {
 
           {/* See All Button */}
           <div className="relative flex justify-center mt-4">
-            <a
-              href="/projects"
+            <Link
+              to="/projects"
               className="inline-flex items-center justify-center bg-[#3B82E6] text-white font-['Urbanist',sans-serif] font-semibold text-[16px] w-[224px] h-[68px] rounded-[90px] opacity-100 shadow-lg hover:shadow-xl transition-all"
               style={{ zIndex: 10 }}
             >
               See All
               <ArrowForwardIcon className="ml-3" style={{ fontSize: 24 }} />
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>

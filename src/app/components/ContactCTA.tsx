@@ -3,6 +3,7 @@ import { useInView } from './hooks/useInView';
 import { useState } from 'react';
 import { CircleCheck, CircleAlert } from 'lucide-react';
 import imgFrame77 from '../../assets/3a9a692779ab823691c63ab78cdd908355c688dc.png';
+import { useServices } from '../../services/queries';
 
 interface FormData {
   name: string;
@@ -22,6 +23,15 @@ interface FormErrors {
 
 export function ContactCTA() {
   const { ref, isInView } = useInView();
+  const { data: servicesResponse, isLoading: servicesLoading } = useServices();
+  
+  // Extract services array from response
+  const services = Array.isArray(servicesResponse) 
+    ? servicesResponse 
+    : (servicesResponse as any)?.data || [];
+  
+  console.log('Services data:', services);
+  
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -148,7 +158,7 @@ export function ContactCTA() {
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="relative z-10 p-20 flex flex-col items-center gap-12"
+            className="relative z-10 py-8 px-12 flex flex-col items-center gap-6"
           >
             {/* Header */}
             <motion.div 
@@ -277,15 +287,25 @@ export function ContactCTA() {
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
+                    disabled={servicesLoading}
                     className={`w-full bg-white/10 backdrop-blur-sm border-2 ${
                       errors.service ? 'border-red-500' : 'border-white/20'
                     } rounded-[16px] px-8 py-5 text-white/50 text-[20px] placeholder:text-white/50 focus:outline-none focus:border-[#3b82e6] transition-all appearance-none`}
                   >
-                    <option value="" disabled className="bg-[#23272f] text-white/50">Select a Service</option>
-                    <option value="Mechanical" className="bg-[#23272f] text-white/50">Mechanical</option>
-                    <option value="Electrical" className="bg-[#23272f] text-white/50">Electrical</option>
-                    <option value="Civil" className="bg-[#23272f] text-white/50">Civil</option>
-                    <option value="Other" className="bg-[#23272f] text-white/50">Other</option>
+                    <option value="" disabled className="bg-[#23272f] text-white/50">
+                      {servicesLoading ? 'Loading services...' : 'Select a Service'}
+                    </option>
+                    {!servicesLoading && services && services.length > 0 ? (
+                      services.map((service: any) => (
+                        <option key={service.id || service.title} value={service.title} className="bg-[#23272f] text-white">
+                          {service.title}
+                        </option>
+                      ))
+                    ) : !servicesLoading && (
+                      <option value="" disabled className="bg-[#23272f] text-white/50">
+                        No services available
+                      </option>
+                    )}
                   </select>
                   {errors.service && (
                     <motion.div
@@ -317,10 +337,10 @@ export function ContactCTA() {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Tell us about your project..."
-                    rows={6}
+                    rows={3}
                     className={`w-full bg-white/10 backdrop-blur-sm border-2 ${
                       errors.message ? 'border-red-500' : 'border-white/20'
-                    } rounded-[16px] px-8 py-5 text-white text-[20px] placeholder:text-white/50 focus:outline-none focus:border-[#3b82e6] transition-all resize-none`}
+                    } rounded-[16px] px-8 py-3 text-white text-[18px] placeholder:text-white/50 focus:outline-none focus:border-[#3b82e6] transition-all resize-none`}
                   />
                   {errors.message && (
                     <motion.div

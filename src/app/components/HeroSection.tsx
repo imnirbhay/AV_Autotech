@@ -2,10 +2,13 @@ import { motion } from 'motion/react';
 import svgPaths from "../../imports/svg-7prhvava0y";
 import contentData from '../../data/content.json';
 import { ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import React from 'react';
 import imgFrame334 from '../../assets/9e81ead33b0c933022b221404e7c213568b3f2e9.png';
 import imgYoungPrettyWoman from '../../assets/6173c131b0406d3c7145e9480ddb14838a494ec7.png';
 
 export function HeroSection() {
+  const [activeBtn, setActiveBtn] = React.useState<'work' | 'contact' | null>(null);
   const { hero } = contentData;
 
   const containerVariants = {
@@ -24,7 +27,7 @@ export function HeroSection() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.8, ease: "easeOut" }
+      transition: { duration: 0.8 }
     }
   };
 
@@ -128,21 +131,33 @@ export function HeroSection() {
               variants={itemVariants}
               className="absolute bottom-4 md:bottom-12 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-md rounded-[50px] p-2 md:p-3 flex items-center gap-2 md:gap-3 shadow-xl w-[50] max-w-[500px]"
             >
-              <motion.button
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-[#3b82e6] text-white px-4 md:px-8 py-3 md:py-4 rounded-[60px] font-['Urbanist',sans-serif] font-medium text-[18px] md:text-[25.692px] tracking-[-0.3854px] flex items-center gap-2 border border-[#d0d5dd]"
+                className="flex gap-2 md:gap-3"
               >
-                Our Work
-                <ArrowUpRight className="w-4 h-4 md:w-6 md:h-6" />
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="text-white px-4 md:px-8 py-3 md:py-4 rounded-[60px] font-['Urbanist',sans-serif] font-light text-[18px] md:text-[25.692px] tracking-[-0.3854px] hover:bg-white/10 transition-all"
-              >
-                Contact Us
-              </motion.button>
+                <Link
+                  to="/projects"
+                  className={`px-5 py-2.5 md:px-8 md:py-4 rounded-[60px] font-['Urbanist',sans-serif] text-[18px] md:text-[25.692px] tracking-[-0.3854px] flex items-center gap-2 border transition-all duration-200
+                    ${activeBtn === 'work' || activeBtn === null ? 'bg-[#3b82e6] text-white border-[#3b82e6] font-medium' : 'bg-transparent text-white border-white font-light hover:bg-[#3b82e6] hover:border-[#3b82e6]'}
+                  `}
+                  onMouseEnter={() => setActiveBtn('work')}
+                  onMouseLeave={() => setActiveBtn(null)}
+                >
+                  Our Work
+                  <ArrowUpRight className="w-4 h-4 md:w-6 md:h-6" />
+                </Link>
+                <Link
+                  to="/contact"
+                  className={`px-5 py-2.5 md:px-8 md:py-4 rounded-[60px] font-['Urbanist',sans-serif] text-[18px] md:text-[25.692px] tracking-[-0.3854px] border transition-all duration-200
+                    ${activeBtn === 'contact' ? 'bg-[#FD853A] text-white border-[#FD853A] font-medium' : 'bg-transparent text-white border-white font-light hover:bg-[#FD853A] hover:border-[#FD853A]'}
+                  `}
+                  onMouseEnter={() => setActiveBtn('contact')}
+                  onMouseLeave={() => setActiveBtn(null)}
+                >
+                  Contact Us
+                </Link>
+              </motion.div>
             </motion.div>
           </motion.div>
 

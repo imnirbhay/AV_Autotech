@@ -68,6 +68,7 @@ export const contentAPI = {
   getTestimonials: () => apiClient.get('/content/testimonials'),
   getWhyChooseUs: () => apiClient.get('/content/why-choose-us'),
   getFooter: () => apiClient.get('/content/footer'),
+  getHomePageVideo: () => apiClient.get('/HomePageVideo/GetHomePageVideo'),
 };
 
 export default contentAPI;
