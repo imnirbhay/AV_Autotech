@@ -53,7 +53,7 @@ export function HeroSection() {
           {/* Hello Badge */}
           <div className="relative inline-flex">
             <div className="bg-white/10 border-2 border-[#171717] rounded-full px-3 sm:px-5 md:px-7 py-1.5 sm:py-2 md:py-3">
-              <p className="font-urbanist font-medium text-xs sm:text-sm md:text-lg text-[#171717] tracking-tight">
+              <p className="font-urbanist font-medium text-sm sm:text-sm md:text-lg text-[#171717] tracking-tight">
                 {hero.greeting}
               </p>
             </div>
@@ -67,10 +67,10 @@ export function HeroSection() {
 
           {/* Main Title */}
           <div className="font-urbanist text-[#171717] w-full px-1 text-center relative">
-            <p className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-tight mb-1 sm:mb-2 md:mb-3 tracking-tight">
+            <p className="text-3xl sm:text-3xl md:text-5xl lg:text-6xl leading-tight mb-1 sm:mb-2 md:mb-3 tracking-tight">
               <span className="font-medium">{hero.title}</span>
             </p>
-            <p className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight relative inline-block">
+            <p className="text-3xl sm:text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight relative inline-block">
               <span className="font-semibold text-[#3b82e6] relative inline-block">
                 {hero.highlightedTitle}
                 {/* Decorative SVG Element at bottom left of E */}
@@ -91,10 +91,10 @@ export function HeroSection() {
           {/* Center Image with decorative elements */}
           <motion.div 
             variants={itemVariants}
-            className="relative w-full max-w-full sm:max-w-[800px] md:max-w-[952px]"
+            className="relative w-full max-w-full sm:max-w-[800px] md:max-w-[952px] scale-110"
           >
             {/* Main Hero Image */}
-            <div className="w-full aspect-[4/3] sm:aspect-[3/2] relative">
+            <div className="w-full aspect-[4/3] sm:aspect-[3/2] relative md:scale-100">
               <motion.img
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
