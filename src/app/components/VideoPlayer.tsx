@@ -45,7 +45,7 @@ export function VideoPlayer() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover rounded-2xl shadow-lg"
+          className="w-[1350px] h-full object-cover rounded-2xl shadow-lg"
         >
           <source src={videoUrl} type="video/mp4" />
           Your browser does not support the video tag.

@@ -368,7 +368,7 @@ export function ContactCTA() {
                 disabled={isSubmitting}
                 whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
                 whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                className={`w-full py-6 rounded-[16px] font-['Urbanist',sans-serif] font-semibold text-[24px] tracking-[-0.48px] transition-all ${
+                className={`w-full py-3.5 rounded-[16px] font-['Urbanist',sans-serif] font-semibold text-[24px] tracking-[-0.48px] transition-all ${
                   submitStatus === 'success'
                     ? 'bg-green-500 text-white'
                     : submitStatus === 'error'

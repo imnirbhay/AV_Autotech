@@ -62,30 +62,33 @@ export function Projects() {
                   <motion.div
                     key={project._id}
                     variants={cardVariants}
-                    className="group"
                   >
-                    <div className="relative h-[400px] rounded-[32px] overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer bg-gradient-to-br from-[#3b82e6] to-[#1e3a8a]">
+                    <div className="relative h-[400px] rounded-[32px] overflow-hidden shadow-lg transition-shadow duration-300 cursor-pointer bg-gradient-to-br from-[#3b82e6] to-[#1e3a8a]">
                       {/* Background Image */}
                       <img
                         src={project.image}
                         alt={project.title}
-                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500"
                       />
-                      {/* Dark Overlay - Gets darker on hover */}
-                      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/70 transition-colors duration-300" />
+                      
+                      {/* Dark Overlay with gradient - Always visible */}
+                      <div className="absolute inset-0 transition-all duration-300 pointer-events-none">
+                        <div className="w-full h-full absolute inset-0" style={{background: 'linear-gradient(180deg, rgba(0,0,0,0.6) 0%, #000 97.45%)'}} />
+                      </div>
+                      
                       {/* Content Container */}
                       <div className="absolute inset-0 flex flex-col justify-end p-8">
                         {/* Project Title - Always visible */}
-                        <h3 className="font-['Urbanist',sans-serif] font-bold text-[40px] text-white tracking-[-0.8px] mb-4 group-hover:mb-4 transition-all duration-300">
+                        <h3 className="font-['Urbanist',sans-serif] font-bold text-[40px] text-white tracking-[-0.8px] mb-4 transition-all duration-300">
                           {project.title}
                         </h3>
-                        {/* Category and Button - Hidden by default, shown on hover */}
-                        <div className="max-h-0 overflow-hidden group-hover:max-h-64 transition-all duration-500 ease-in-out">
+                        {/* Description - Always visible */}
+                        <div className="transition-all duration-500 ease-in-out">
                           <p className="font-['Montserrat',sans-serif] text-[14px] text-white/90 leading-relaxed mb-6">
-                            {project.category}
+                            {project.description}
                           </p>
                           {/* View Details Button */}
-                          <button className="inline-flex items-center gap-2 bg-[#3b82e6] hover:bg-white text-white hover:text-[#3b82e6] font-['Urbanist',sans-serif] font-semibold text-[14px] py-3 px-6 rounded-[20px] transition-all duration-300">
+                          <button className="inline-flex items-center gap-2 bg-[#3b82e6] text-white font-['Urbanist',sans-serif] font-semibold text-[14px] py-3 px-6 rounded-[20px]">
                             View Details
                             <ChevronRight size={18} />
                           </button>
