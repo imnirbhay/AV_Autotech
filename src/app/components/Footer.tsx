@@ -39,7 +39,7 @@ export function Footer() {
                 onClick={scrollToTop}
                 className="font-['Wallpoet',sans-serif] text-[40px] text-white tracking-[-0.48px] cursor-pointer"
               >
-                Suraj
+                AV Autotech
               </motion.h3>
               <p className="font-['Montserrat',sans-serif] text-white/70 text-[16px] leading-relaxed">
                 {footer.description}
@@ -125,10 +125,11 @@ export function Footer() {
                 >
                   <Mail className="w-5 h-5" />
                   <span className="font-['Montserrat',sans-serif] text-[16px]">
-                    contact@suraj.com
+                    contact@AV Autotech.com
                   </span>
                 </motion.div>
                 <motion.div 
+                
                   whileHover={{ x: 5 }}
                   className="flex items-center gap-3 text-white/70 hover:text-[#3b82e6] transition-all cursor-pointer"
                 >
@@ -162,7 +163,7 @@ export function Footer() {
               className="flex flex-col md:flex-row items-center justify-between gap-4"
             >
               <p className="font-['Montserrat',sans-serif] text-white/50 text-[14px]">
-                © {new Date().getFullYear()} Suraj. All rights reserved.
+                © {new Date().getFullYear()} AV Autotech. All rights reserved.
               </p>
               <div className="flex items-center gap-6">
                 <motion.a 
