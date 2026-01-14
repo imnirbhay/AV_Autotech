@@ -5,8 +5,7 @@ import { useProjects } from '../../services/queries';
 import defaultProjectImg from '../../assets/5cf28d4ff7cabdc9b27cdea620bb18818f2d6f54.png';
 
 export function ProjectsPage() {
-  const { data: projectsResponse, isLoading, error } = useProjects();
-  const projects = Array.isArray(projectsResponse) ? projectsResponse : (projectsResponse?.data || []);
+  const { data: projects = [], isLoading, error } = useProjects();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -78,7 +77,7 @@ export function ProjectsPage() {
           ) : (
             projects.map((project, index) => (
               <motion.div
-                key={project.id}
+                key={project._id}
                 variants={cardVariants}
                 whileHover={{ 
                   y: -15,
@@ -91,7 +90,7 @@ export function ProjectsPage() {
                   <img 
                     alt={project.title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-                    src={project.image || project.imageUrl || defaultProjectImg} 
+                    src={project.image || defaultProjectImg} 
                   />
                   {/* Gradient Overlay */}
                   <div 

@@ -2,15 +2,11 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { useInView } from './hooks/useInView';
 import { ArrowUpRight } from 'lucide-react';
-import imgFrame26 from '../../assets/5cf28d4ff7cabdc9b27cdea620bb18818f2d6f54.png';
-import imgFrame28 from '../../assets/2e2146d6ef43febb94a0229038f623c9a714e196.png';
 import { useProjects } from '../../services/queries';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 export function Portfolio() {
   const { ref, isInView } = useInView();
-  const projectImages = [imgFrame26, imgFrame28];
-  const { data: projectsResponse } = useProjects();
-  const projects = Array.isArray(projectsResponse) ? projectsResponse : (projectsResponse?.data || []);
+  const { data: projects = [] } = useProjects();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -32,13 +28,13 @@ export function Portfolio() {
   };
 
   return (
-    <section id="projects" ref={ref} className="py-20 flex justify-center px-4 md:px-8">
-      <div className="w-full max-w-[1400px] mx-auto">
+    <section id="projects" ref={ref} className="py-12 flex justify-center px-4 md:px-8">
+      <div className="w-full max-w-[1440px] mx-auto">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="flex flex-col gap-12 md:gap-16"
+          className="flex flex-col gap-6 md:gap-8"
         >
           {/* Header */}
           <motion.div 
@@ -61,12 +57,7 @@ export function Portfolio() {
               <motion.div
                 key={project._id}
                 variants={cardVariants}
-                whileHover={{ 
-                  y: -10,
-                  scale: 1.02,
-                  transition: { duration: 0.3 }
-                }}
-                className="group cursor-pointer"
+                className="cursor-pointer"
               >
                 <div className="relative rounded-[19px] h-[280px] md:h-[351px] overflow-hidden shadow-xl">
                   {/* Background Image */}
@@ -76,11 +67,11 @@ export function Portfolio() {
                     src={project.image} 
                   />
                   
-                  {/* Gradient Overlay */}
+                  {/* Gradient Overlay - Same as services hover gradient */}
                   <div 
-                    className="absolute inset-0 opacity-80 group-hover:opacity-90 transition-opacity"
+                    className="absolute inset-0"
                     style={{
-                      backgroundImage: "linear-gradient(192.536deg, rgba(0, 0, 0, 0) 33.316%, rgba(0, 0, 0, 0.416) 78.02%, rgba(0, 0, 0, 0.8) 103.58%)"
+                      background: "linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 97.45%)"
                     }}
                   />
 
@@ -88,22 +79,16 @@ export function Portfolio() {
                   <div className="relative h-full p-4 flex flex-col justify-between">
                     {/* Arrow Button */}
                     <div className="flex justify-end">
-                      <motion.div
-                        whileHover={{ rotate: 45, scale: 1.2 }}
-                        className="bg-white border-[3.783px] border-[#3b82e6] rounded-full w-[50px] h-[50px] md:w-[60px] md:h-[60px] flex items-center justify-center"
-                      >
+                      <div className="bg-white border-[3.783px] border-[#3b82e6] rounded-full w-[50px] h-[50px] md:w-[60px] md:h-[60px] flex items-center justify-center">
                         <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 text-[#3b82e6]" />
-                      </motion.div>
+                      </div>
                     </div>
 
                     {/* Title */}
                     <div className="px-2">
-                      <motion.h3 
-                        className="font-['Urbanist',sans-serif] text-[#fffaf5] text-[48px] md:text-[66px] leading-none tracking-[-0.993px] group-hover:text-[#3b82e6] transition-colors"
-                        whileHover={{ x: 10 }}
-                      >
+                      <h3 className="font-['Urbanist',sans-serif] text-[#fffaf5] text-[48px] md:text-[66px] leading-none tracking-[-0.993px]">
                         {project.title}
-                      </motion.h3>
+                      </h3>
                     </div>
                   </div>
                 </div>

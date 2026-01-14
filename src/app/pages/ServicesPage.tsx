@@ -4,9 +4,7 @@ import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { useServices } from '../../services/queries';
 
 export function ServicesPage() {
-  const { data: servicesResponse = {} , isLoading, error } = useServices();
-  // Extract the actual services array from the response (like Services.tsx)
-  const services = servicesResponse?.data || [];
+  const { data: services = [] , isLoading, error } = useServices();
 
   const containerVariants = {
     hidden: { opacity: 0 },
