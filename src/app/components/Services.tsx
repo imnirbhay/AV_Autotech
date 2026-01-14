@@ -65,7 +65,7 @@ export function Services() {
                     variants={cardVariants}
                     className="group"
                   >
-                    <div className="relative h-[400px] rounded-[32px] overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer bg-gradient-to-br from-[#3b82e6] to-[#1e3a8a]">
+                    <div className="relative aspect-square md:aspect-auto md:h-[400px] rounded-[32px] overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer bg-gradient-to-br from-[#3b82e6] to-[#1e3a8a]">
                       {/* Background Image */}
                       {service.image && (
                         <img

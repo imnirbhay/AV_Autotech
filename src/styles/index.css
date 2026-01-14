@@ -7,7 +7,13 @@ html {
 }
 body {
   background-color: #E5F0FF;
-  zoom: 0.9;
+  zoom: 0.95;
+}
+
+@media (max-width: 768px) {
+  body {
+    zoom: 1.10;
+  }
 }
 
 /* Smooth scroll behavior */

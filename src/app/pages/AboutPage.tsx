@@ -51,7 +51,7 @@ export function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white py-20 px-8">
+    <div className="min-h-screen bg-white py-20 px-8 pt-28 md:pt-32">
       <div className="max-w-[1400px] mx-auto">
         {/* Back Button */}
         <Link 

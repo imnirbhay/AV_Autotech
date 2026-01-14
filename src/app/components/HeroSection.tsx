@@ -32,7 +32,7 @@ export function HeroSection() {
   };
 
   return (
-    <section id="home" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20 md:pt-32 pb-0 px-3 sm:px-4">
+    <section id="home" className="relative w-full md:min-h-screen flex items-center justify-center overflow-hidden pt-32 sm:pt-32 md:pt-32 pb-0 px-3 sm:px-4 md:min-h-screen min-h-auto">
       {/* Background Image */}
       <div className="absolute inset-0 pointer-events-none">
         <img 
@@ -46,10 +46,10 @@ export function HeroSection() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 w-full max-w-[1440px] mx-auto px-2 sm:px-4 md:px-8 flex flex-col items-center gap-4 sm:gap-6 md:gap-8"
+        className="relative z-10 w-full md:w-full h-auto md:h-auto max-w-[1440px] mx-auto px-3 md:px-2 md:sm:px-4 md:px-8 flex flex-col items-center gap-2 sm:gap-6 md:gap-8"
       >
         {/* Top Section - Hello + Title */}
-        <motion.div variants={itemVariants} className="relative z-30 flex flex-col items-center gap-1 sm:gap-2 md:gap-3 text-center mb-0 sm:mb-[-10px] md:mb-[-30px] lg:mb-[-40px]">
+        <motion.div variants={itemVariants} className="relative z-30 flex flex-col items-center gap-1 sm:gap-2 md:gap-3 text-center mb-0 sm:mb-[-10px] md:mb-[-30px] lg:mb-[-40px] w-auto md:w-auto h-auto md:h-auto mt-0 md:mt-0 ml-0 md:ml-0 pt-0 md:pt-0 pr-0 md:pr-0 pb-0 md:pb-0 pl-0 md:pl-0">
           {/* Hello Badge */}
           <div className="relative inline-flex">
             <div className="bg-white/10 border-2 border-[#171717] rounded-full px-3 sm:px-5 md:px-7 py-1.5 sm:py-2 md:py-3">
