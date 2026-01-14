@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { ChevronRight } from 'lucide-react';
 import { useInView } from './hooks/useInView';
 import { useServices } from '../../services/queries';
+import { Link } from 'react-router-dom';
 
 export function Services() {
   const { ref, isInView } = useInView();
@@ -112,14 +113,14 @@ export function Services() {
         </div>
         {/* See All Button overlapping bottom border */}
         <div className="relative flex justify-center">
-          <a
-            href="/services"
-            className="absolute left-1/2 -translate-x-1/2 -bottom-8 inline-flex items-center justify-center bg-[#3B82E6] text-white font-['Urbanist',sans-serif] font-semibold text-[16px] w-[224px] h-[68px] rounded-[90px] opacity-100"
+          <Link
+            to="/services"
+            className="absolute left-1/2 -translate-x-1/2 -bottom-8 inline-flex items-center justify-center bg-[#3B82E6] text-white font-['Urbanist',sans-serif] font-semibold text-[16px] w-[224px] h-[68px] rounded-[90px] opacity-100 hover:bg-[#2563eb] transition-colors"
             style={{ zIndex: 10 }}
           >
             See All
             <ArrowForwardIcon className="ml-3" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

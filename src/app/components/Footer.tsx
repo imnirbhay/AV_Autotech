@@ -39,22 +39,22 @@ export function Footer() {
                 onClick={scrollToTop}
                 className="font-['Wallpoet',sans-serif] text-[40px] text-white tracking-[-0.48px] cursor-pointer"
               >
-                Suraj
+                AV Autotech
               </motion.h3>
               <p className="font-['Montserrat',sans-serif] text-white/70 text-[16px] leading-relaxed">
                 {footer.description}
               </p>
               <div className="flex items-center gap-4 mt-4">
                 {[Facebook, Twitter, Linkedin, Instagram].map((Icon, index) => (
-                  <motion.a
+                  <motion.button
                     key={index}
-                    href="#"
+                    onClick={(e) => e.preventDefault()}
                     whileHover={{ scale: 1.2, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
                     className="w-10 h-10 bg-white/10 hover:bg-[#3b82e6] rounded-full flex items-center justify-center transition-all"
                   >
                     <Icon className="w-5 h-5 text-white" />
-                  </motion.a>
+                  </motion.button>
                 ))}
               </div>
             </motion.div>
@@ -165,20 +165,20 @@ export function Footer() {
                 © {new Date().getFullYear()} Suraj. All rights reserved.
               </p>
               <div className="flex items-center gap-6">
-                <motion.a 
-                  href="#"
+                <motion.button 
+                  onClick={(e) => e.preventDefault()}
                   whileHover={{ y: -2 }}
                   className="font-['Montserrat',sans-serif] text-white/50 hover:text-[#3b82e6] text-[14px] transition-all"
                 >
                   Privacy Policy
-                </motion.a>
-                <motion.a 
-                  href="#"
+                </motion.button>
+                <motion.button 
+                  onClick={(e) => e.preventDefault()}
                   whileHover={{ y: -2 }}
                   className="font-['Montserrat',sans-serif] text-white/50 hover:text-[#3b82e6] text-[14px] transition-all"
                 >
                   Terms of Service
-                </motion.a>
+                </motion.button>
               </div>
             </motion.div>
           </div>
