@@ -17,7 +17,7 @@ import imgFrame326 from "figma:asset/3f0c7249e0ba3d9e3c1556a26c76670f11a0068c.pn
 function Frame10() {
   return (
     <div className="content-stretch flex items-center justify-center relative shrink-0">
-      <p className="font-['Wallpoet:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[32px] text-nowrap text-white tracking-[-0.48px]">Suraj</p>
+      <p className="font-['Wallpoet:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[32px] text-nowrap text-white tracking-[-0.48px]">AV Autotech</p>
     </div>
   );
 }
