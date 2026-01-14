@@ -53,7 +53,7 @@ export function HeroSection() {
           {/* Hello Badge */}
           <div className="relative inline-flex">
             <div className="bg-white/10 border-2 border-[#171717] rounded-[39px] px-5 md:px-7 py-2 md:py-3">
-              <p className="font-['Urbanist',sans-serif] font-medium text-[18px] md:text-[24px] text-[#171717] tracking-[-0.48px]">
+              <p className="font-urbanist font-medium text-sm md:text-lg text-[#171717] tracking-tight">
                 {hero.greeting}
               </p>
             </div>
@@ -66,15 +66,15 @@ export function HeroSection() {
           </div>
 
           {/* Main Title */}
-          <div className="font-['Urbanist',sans-serif] text-[#171717] max-w-[913px] text-center relative">
-            <p className="text-[48px] md:text-[72px] lg:text-[95px] leading-[100%] mb-2 tracking-[-0.02em]">
+          <div className="font-urbanist text-[#171717] max-w-[913px] text-center relative">
+            <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight mb-2 tracking-tight">
               <span className="font-medium">{hero.title}</span>
             </p>
-            <p className="text-[48px] md:text-[72px] lg:text-[95px] leading-[100%] tracking-[-0.02em] relative inline-block">
+            <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight relative inline-block">
               <span className="font-semibold text-[#3b82e6] relative inline-block">
                 {hero.highlightedTitle}
                 {/* Decorative SVG Element at bottom left of E */}
-                <span className="absolute -bottom-4 -left-8 md:-bottom-6 md:-left-12 w-8 h-8 md:w-12 md:h-12 rotate-180">
+                <span className="absolute -bottom-2 -left-6 sm:-bottom-3 sm:-left-8 md:-bottom-6 md:-left-12 w-6 h-6 sm:w-8 sm:h-8 md:w-12 md:h-12 rotate-180">
                   <svg className="w-full h-full" fill="none" viewBox="0 0 76.8909 79.505">
                     <path d={svgPaths.p3e7cd7c0} stroke="#3B82E6" strokeLinecap="round" strokeLinejoin="round" strokeWidth="5" />
                   </svg>
@@ -93,13 +93,13 @@ export function HeroSection() {
             variants={itemVariants}
             className="absolute left-4 top-1/3 max-w-[444px] z-20 bg-white/80 backdrop-blur-sm rounded-3xl p-6 md:p-8 shadow-xl hidden xl:flex flex-col gap-6"
           >
-            <div className="w-9 h-9">
+            <div className="w-8 h-8 md:w-9 md:h-9">
               <svg className="w-full h-full" fill="none" viewBox="0 0 36 36">
                 <path d={svgPaths.p35158000} fill="#344054" />
                 <path d={svgPaths.p2b170700} fill="#344054" />
               </svg>
             </div>
-            <p className="font-['Montserrat',sans-serif] text-[#171717] text-[20px] md:text-[28px] leading-tight tracking-[-0.56px]">
+            <p className="font-montserrat text-[#171717] text-base md:text-xl leading-snug tracking-tight">
               {hero.description}
             </p>
           </motion.div>
@@ -127,27 +127,27 @@ export function HeroSection() {
             {/* Bottom CTA Buttons */}
             <motion.div 
               variants={itemVariants}
-              className="absolute bottom-4 md:bottom-12 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-md rounded-[50px] p-2 md:p-3 flex items-center gap-2 md:gap-3 shadow-xl w-[50] max-w-[500px]"
+              className="absolute bottom-4 md:bottom-12 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-md rounded-full p-1.5 md:p-3 flex items-center gap-1 md:gap-3 shadow-xl w-auto"
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex gap-2 md:gap-3"
+                className="flex gap-1 md:gap-3"
               >
                 <Link
                   to="/projects"
-                  className={`px-5 py-2.5 md:px-8 md:py-4 rounded-[60px] font-['Urbanist',sans-serif] text-[18px] md:text-[25.692px] tracking-[-0.3854px] flex items-center gap-2 border transition-all duration-200
+                  className={`px-2.5 sm:px-4 md:px-8 py-1 sm:py-2 md:py-4 rounded-full font-urbanist text-xs sm:text-sm md:text-lg tracking-tight flex items-center justify-center gap-1 md:gap-2 border transition-all duration-200 whitespace-nowrap
                     ${activeBtn === 'work' || activeBtn === null ? 'bg-[#3b82e6] text-white border-[#3b82e6] font-medium' : 'bg-transparent text-white border-white font-light hover:bg-[#3b82e6] hover:border-[#3b82e6]'}
                   `}
                   onMouseEnter={() => setActiveBtn('work')}
                   onMouseLeave={() => setActiveBtn(null)}
                 >
                   Our Work
-                  <ArrowUpRight className="w-4 h-4 md:w-6 md:h-6" />
+                  <ArrowUpRight className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-6 md:h-6" />
                 </Link>
                 <Link
                   to="/contact"
-                  className={`px-5 py-2.5 md:px-8 md:py-4 rounded-[60px] font-['Urbanist',sans-serif] text-[18px] md:text-[25.692px] tracking-[-0.3854px] border transition-all duration-200
+                  className={`px-2.5 sm:px-4 md:px-8 py-1 sm:py-2 md:py-4 rounded-full font-urbanist text-xs sm:text-sm md:text-lg tracking-tight border transition-all duration-200 whitespace-nowrap
                     ${activeBtn === 'contact' ? 'bg-[#FD853A] text-white border-[#FD853A] font-medium' : 'bg-transparent text-white border-white font-light hover:bg-[#FD853A] hover:border-[#FD853A]'}
                   `}
                   onMouseEnter={() => setActiveBtn('contact')}
@@ -183,10 +183,10 @@ export function HeroSection() {
             
             {/* Experience */}
             <div className="text-left">
-              <p className="font-['Montserrat',sans-serif] text-[32px] md:text-[42px] text-[#171717] tracking-[-0.84px]">
+              <p className="font-montserrat text-2xl md:text-3xl text-[#171717] tracking-tight">
                 {hero.experience.label}
               </p>
-              <p className="font-['Urbanist',sans-serif] font-bold text-[56px] md:text-[72px] text-[#171717] leading-none tracking-[-1.44px]">
+              <p className="font-urbanist font-bold text-5xl md:text-6xl text-[#171717] leading-none tracking-tight">
                 {hero.experience.years}
               </p>
             </div>
