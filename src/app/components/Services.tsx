@@ -84,7 +84,7 @@ export function Services() {
                       {/* Content Container */}
                       <div className="absolute inset-0 flex flex-col justify-end p-8">
                         {/* Service Title - Always visible */}
-                        <h3 className="font-['Urbanist',sans-serif] font-bold md:text-[30px] text-[24px] text-white tracking-[-0.8px] mb-4 group-hover:mb-4 transition-all duration-300">
+                        <h3 className="font-['Urbanist',sans-serif] font-bold md:text-[30px] text-[16px] text-white tracking-[-0.8px] mb-4 group-hover:mb-4 transition-all duration-300">
                           {service.title}
                         </h3>
 
