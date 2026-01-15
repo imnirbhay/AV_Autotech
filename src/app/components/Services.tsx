@@ -45,7 +45,7 @@ export function Services() {
               variants={cardVariants}
               className="flex flex-col items-center justify-center text-center"
             >
-              <div className="font-['Urbanist',sans-serif] text-[64px] leading-none tracking-[-1.28px]">
+              <div className="font-['Urbanist',sans-serif] md:text-[64px] text-[32px] leading-none tracking-[-1.28px]">
                 <span className="font-semibold text-[#3B82E6]">Our </span>
                 <span className="font-bold text-[#344054]">Services</span>
               </div>
@@ -84,7 +84,7 @@ export function Services() {
                       {/* Content Container */}
                       <div className="absolute inset-0 flex flex-col justify-end p-8">
                         {/* Service Title - Always visible */}
-                        <h3 className="font-['Urbanist',sans-serif] font-bold text-[30px] text-white tracking-[-0.8px] mb-4 group-hover:mb-4 transition-all duration-300">
+                        <h3 className="font-['Urbanist',sans-serif] font-bold md:text-[30px] text-[24px] text-white tracking-[-0.8px] mb-4 group-hover:mb-4 transition-all duration-300">
                           {service.title}
                         </h3>
 
