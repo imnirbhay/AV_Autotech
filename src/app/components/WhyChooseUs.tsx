@@ -96,13 +96,13 @@ export function WhyChooseUs() {
                 <div className="bg-[rgba(59,130,230,0.4)] rounded-[50px] md:w-[420px] md:h-[530px] w-full md:flex items-center justify-center p-4">
                   {/* Image directly inside blue background */}
                   <motion.div 
-                    className="md:w-[390px] md:h-[500px] w-full aspect-video md:aspect-auto rounded-[20px] overflow-hidden"
+                    className="md:w-[390px] md:h-[500px] w-full h-[280px] max-w-[320px] mx-auto aspect-[3/4] md:aspect-auto rounded-[20px] overflow-hidden"
                     whileHover={{ y: -10 }}
                     transition={{ duration: 0.3 }}
                   >
                     <img 
                       alt="Engineering professional"
-                      className="w-full h-full object-crop" 
+                      className="w-full h-full object-cover object-center" 
                       src={imgUnsplashHXbdghd1JJa} 
                     />
                   </motion.div>
