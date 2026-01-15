@@ -86,7 +86,7 @@ export function Portfolio() {
 
                     {/* Title */}
                     <div className="px-2">
-                      <h3 className="font-['Urbanist',sans-serif] text-[#fffaf5] text-[48px] md:text-[66px] leading-none tracking-[-0.993px]">
+                      <h3 className="font-['Urbanist',sans-serif] text-[#fffaf5] text-[24px] md:text-[66px] leading-none tracking-[-0.993px]">
                         {project.title}
                       </h3>
                     </div>
