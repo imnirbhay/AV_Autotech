@@ -3,7 +3,8 @@ import { useInView } from './hooks/useInView';
 import svgPaths from "../../imports/svg-7prhvava0y";
 import contentData from '../../data/content.json';
 import imgUnsplashHXbdghd1JJa from '../../assets/2307e9fc8d99bba15eb3c4f90c31a624850eda34.png';
-
+import instagramLogo from '../../assets/2227.jpg';
+import indiaartLogo from '../../assets/cd49b1e25e58eededaf41103636e4344d7190b9b.png';
 export function WhyChooseUs() {
   const { ref, isInView } = useInView();
   const { whyChooseUs } = contentData;
@@ -158,8 +159,12 @@ export function WhyChooseUs() {
                 <div className="flex flex-col items-center justify-end gap-2">
                   <span className="font-['Montserrat',sans-serif] font-semibold text-[#151515] md:text-[24px] text-[16px]">Contact Here</span>
                   <div className="flex flex-row items-center justify-center gap-2">
-                    <img src="/src/assets/cd49b1e25e58eededaf41103636e4344d7190b9b.png" alt="Instamart" className="md:w-16 md:h-16 w-12 h-12 object-contain rounded-full" />
-                    <img src="/src/assets/2227.jpg" alt="Instagram" className="md:w-16 md:h-16 w-12 h-12 object-contain rounded-full" />
+                    <a href="https://www.indiaart.com/" target="_blank" rel="noopener noreferrer">
+                      <img src={indiaartLogo} alt="Indiaart" className="md:w-16 md:h-16 w-12 h-12 object-contain rounded-full" />
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                      <img src={instagramLogo} alt="Instagram" className="md:w-16 md:h-16 w-12 h-12 object-contain rounded-full" />
+                    </a>
                   </div>
                 </div>
               </div>
