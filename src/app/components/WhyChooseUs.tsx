@@ -50,8 +50,8 @@ export function WhyChooseUs() {
 
   return (
     <section id="about" ref={ref} className="py-12 flex justify-center">
-      <div className="w-full md:max-w-[1440px] md:mx-auto md:px-8 px-4">
-        <div className="md:bg-[#f6faff] md:rounded-[50px] md:p-[60px] relative overflow-hidden w-full md:w-full md:h-auto mx-auto">
+      <div className="w-full max-w-[1440px] mx-auto px-8">
+        <div className="bg-[#F6FAFF] rounded-[20px] md:rounded-[50px] p-4 md:p-[60px] shadow-lg border border-[#e5e7eb] relative overflow-hidden">
           {/* Decorative Wave Pattern */}
           <motion.div 
             className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none"
