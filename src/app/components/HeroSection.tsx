@@ -111,7 +111,7 @@ export function HeroSection() {
             {/* Bottom CTA Buttons - Stacked on mobile, row on desktop */}
             <motion.div 
               variants={itemVariants}
-              className="absolute bottom-2 sm:bottom-4 md:bottom-12 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-md rounded-2xl md:rounded-full p-1 sm:p-1.5 md:p-3 flex flex-col md:flex-row items-center gap-2 md:gap-3 shadow-xl w-full max-w-xs md:w-auto md:max-w-none"
+              className="absolute bottom-0 sm:bottom-4 md:bottom-12 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-md rounded-2xl md:rounded-full p-1 sm:p-1.5 md:p-3 flex flex-col md:flex-row items-center gap-2 md:gap-3 shadow-xl w-full max-w-xs md:w-auto md:max-w-none"
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
