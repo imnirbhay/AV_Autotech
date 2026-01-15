@@ -146,7 +146,7 @@ export function ContactCTA() {
   return (
     <section id="contact" ref={ref} className="py-12 flex justify-center">
       <div className="w-full max-w-[1440px] mx-auto px-4 md:px-8">
-        <div className="bg-[#171717] rounded-[40px] relative overflow-hidden">
+        <div className="bg-[#171717] md:rounded-[40px] rounded-[20px] relative overflow-hidden">
           {/* Background Image */}
           <img 
             alt="" 
@@ -368,7 +368,7 @@ export function ContactCTA() {
                 disabled={isSubmitting}
                 whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
                 whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                className={`w-full py-2.5 md:py-3.5 rounded-[16px] font-['Urbanist',sans-serif] font-semibold text-[16px] md:text-[24px] tracking-[-0.48px] transition-all ${
+                className={`w-full py-2.5 md:py-3.5 md:rounded-[16px] rounded-[32px] font-['Urbanist',sans-serif] font-semibold text-[16px] md:text-[24px] tracking-[-0.48px] transition-all ${
                   submitStatus === 'success'
                     ? 'bg-green-500 text-white'
                     : submitStatus === 'error'

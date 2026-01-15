@@ -71,7 +71,7 @@ export function HeroSection() {
               <span className="font-medium">{hero.title}</span>
             </p>
             <p className="text-3xl sm:text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight relative inline-block">
-              <span className="font-semibold text-[#3b82e6] relative inline-block">
+              <span className="font-bold text-[#3b82e6] relative inline-block">
                 {hero.highlightedTitle}
                 {/* Decorative SVG Element at bottom left of E */}
                 <span className="absolute -bottom-1 -left-3 sm:-bottom-2 sm:-left-5 md:-bottom-4 md:-left-8 lg:-bottom-6 lg:-left-12 w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-12 lg:h-12 rotate-180">
@@ -108,30 +108,30 @@ export function HeroSection() {
               <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-white/20 to-transparent pointer-events-none" />
             </div>
 
-            {/* Bottom CTA Buttons */}
+            {/* Bottom CTA Buttons - Stacked on mobile, row on desktop */}
             <motion.div 
               variants={itemVariants}
-              className="absolute bottom-2 sm:bottom-4 md:bottom-12 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-md rounded-full p-1 sm:p-1.5 md:p-3 flex items-center gap-0.5 sm:gap-1 md:gap-3 shadow-xl w-auto"
+              className="absolute bottom-2 sm:bottom-4 md:bottom-12 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-md rounded-2xl md:rounded-full p-1 sm:p-1.5 md:p-3 flex flex-col md:flex-row items-center gap-2 md:gap-3 shadow-xl w-full max-w-xs md:w-auto md:max-w-none"
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex gap-0.5 sm:gap-1 md:gap-3"
+                className="flex flex-col md:flex-row w-full gap-2 md:gap-3"
               >
                 <Link
                   to="/projects"
-                  className={`px-2 sm:px-3 md:px-8 py-0.5 sm:py-1.5 md:py-4 rounded-full font-urbanist text-xs sm:text-sm md:text-lg tracking-tight flex items-center justify-center gap-0.5 md:gap-2 border transition-all duration-200 whitespace-nowrap
+                  className={`w-full md:w-auto px-4 md:px-8 py-2 md:py-4 rounded-xl md:rounded-full font-urbanist text-sm md:text-lg tracking-tight flex items-center justify-center gap-2 border transition-all duration-200 whitespace-nowrap
                     ${activeBtn === 'work' || activeBtn === null ? 'bg-[#3b82e6] text-white border-[#3b82e6] font-medium' : 'bg-transparent text-white border-white font-light hover:bg-[#3b82e6] hover:border-[#3b82e6]'}
                   `}
                   onMouseEnter={() => setActiveBtn('work')}
                   onMouseLeave={() => setActiveBtn(null)}
                 >
                   Our Work
-                  <ArrowUpRight className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-6 md:h-6" />
+                  <ArrowUpRight className="w-4 h-4 md:w-6 md:h-6" />
                 </Link>
                 <Link
-                  to="/contact"
-                  className={`px-2 sm:px-3 md:px-8 py-0.5 sm:py-1.5 md:py-4 rounded-full font-urbanist text-xs sm:text-sm md:text-lg tracking-tight border transition-all duration-200 whitespace-nowrap
+                  to="/#contact"
+                  className={`w-full md:w-auto px-4 md:px-8 py-2 md:py-4 rounded-xl md:rounded-full font-urbanist text-sm md:text-lg tracking-tight border transition-all duration-200 whitespace-nowrap text-center md:text-left
                     ${activeBtn === 'contact' ? 'bg-[#FD853A] text-white border-[#FD853A] font-medium' : 'bg-transparent text-white border-white font-light hover:bg-[#FD853A] hover:border-[#FD853A]'}
                   `}
                   onMouseEnter={() => setActiveBtn('contact')}
