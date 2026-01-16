@@ -27,15 +27,15 @@ export function ProjectsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white py-20 px-8 pt-28 md:pt-32">
+    <div className="min-h-screen bg-white py-10 md:py-20 px-4 sm:px-6 md:px-8 pt-24 sm:pt-28 md:pt-32">
       <div className="max-w-[1400px] mx-auto">
         {/* Back Button */}
         <Link 
           to="/" 
-          className="inline-flex items-center gap-2 mb-12 text-[#171717] hover:text-[#3b82e6] transition-colors"
+          className="inline-flex items-center gap-2 mb-8 md:mb-12 text-[#171717] hover:text-[#3b82e6] transition-colors"
         >
           <ArrowLeft size={24} />
-          <span className="font-['Urbanist',sans-serif] text-[18px] font-medium">Back to Home</span>
+          <span className="font-['Urbanist',sans-serif] text-sm sm:text-base md:text-[18px] font-medium">Back to Home</span>
         </Link>
 
         {/* Page Header */}
@@ -43,13 +43,13 @@ export function ProjectsPage() {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-8 md:mb-16"
         >
-          <h1 className="font-['Urbanist',sans-serif] text-[80px] leading-none tracking-[-1.6px] mb-6">
+          <h1 className="font-['Urbanist',sans-serif] text-3xl sm:text-5xl md:text-[80px] leading-none tracking-[-1.6px] mb-4 md:mb-6">
             <span className="font-semibold text-[#171717]">Our </span>
             <span className="font-bold text-[#3b82e6]">Projects</span>
           </h1>
-          <p className="font-['Montserrat',sans-serif] text-[20px] text-[#525252] max-w-[800px] leading-relaxed">
+          <p className="font-['Montserrat',sans-serif] text-xs sm:text-sm md:text-[20px] text-[#525252] max-w-[800px] leading-relaxed">
             Explore our portfolio of successful engineering projects. 
             From concept to completion, we deliver excellence in every undertaking.
           </p>
@@ -139,19 +139,19 @@ export function ProjectsPage() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
         >
-          <div className="bg-gradient-to-br from-[#3b82e6] to-[#2563eb] rounded-[32px] p-10 text-center">
-            <div className="font-['Urbanist',sans-serif] font-bold text-[64px] text-white mb-2">450+</div>
-            <div className="font-['Montserrat',sans-serif] text-[18px] text-white/90">Projects Completed</div>
+          <div className="bg-gradient-to-br from-[#3b82e6] to-[#2563eb] rounded-[24px] md:rounded-[32px] p-8 md:p-10 text-center">
+            <div className="font-['Urbanist',sans-serif] font-bold text-4xl md:text-[64px] text-white mb-2">450+</div>
+            <div className="font-['Montserrat',sans-serif] text-sm md:text-[18px] text-white/90">Projects Completed</div>
           </div>
-          <div className="bg-gradient-to-br from-[#171717] to-[#2d2d2d] rounded-[32px] p-10 text-center">
-            <div className="font-['Urbanist',sans-serif] font-bold text-[64px] text-white mb-2">60+</div>
-            <div className="font-['Montserrat',sans-serif] text-[18px] text-white/90">Happy Clients</div>
+          <div className="bg-gradient-to-br from-[#171717] to-[#2d2d2d] rounded-[24px] md:rounded-[32px] p-8 md:p-10 text-center">
+            <div className="font-['Urbanist',sans-serif] font-bold text-4xl md:text-[64px] text-white mb-2">60+</div>
+            <div className="font-['Montserrat',sans-serif] text-sm md:text-[18px] text-white/90">Happy Clients</div>
           </div>
-          <div className="bg-gradient-to-br from-[#3b82e6] to-[#2563eb] rounded-[32px] p-10 text-center">
-            <div className="font-['Urbanist',sans-serif] font-bold text-[64px] text-white mb-2">10+</div>
-            <div className="font-['Montserrat',sans-serif] text-[18px] text-white/90">Years Experience</div>
+          <div className="bg-gradient-to-br from-[#3b82e6] to-[#2563eb] rounded-[24px] md:rounded-[32px] p-8 md:p-10 text-center">
+            <div className="font-['Urbanist',sans-serif] font-bold text-4xl md:text-[64px] text-white mb-2">10+</div>
+            <div className="font-['Montserrat',sans-serif] text-sm md:text-[18px] text-white/90">Years Experience</div>
           </div>
         </motion.div>
 
@@ -160,17 +160,17 @@ export function ProjectsPage() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.6 }}
-          className="mt-24 bg-gradient-to-br from-[#171717] to-[#2d2d2d] rounded-[40px] p-16 text-center"
+          className="mt-16 md:mt-24 bg-gradient-to-br from-[#171717] to-[#2d2d2d] rounded-[32px] md:rounded-[40px] p-8 md:p-16 text-center"
         >
-          <h2 className="font-['Urbanist',sans-serif] font-bold text-[48px] text-white mb-6">
+          <h2 className="font-['Urbanist',sans-serif] font-bold text-2xl sm:text-3xl md:text-[48px] text-white mb-4 md:mb-6">
             Have a Project in Mind?
           </h2>
-          <p className="font-['Montserrat',sans-serif] text-[18px] text-white/80 mb-8 max-w-[600px] mx-auto">
+          <p className="font-['Montserrat',sans-serif] text-xs sm:text-sm md:text-[18px] text-white/80 mb-6 md:mb-8 max-w-[600px] mx-auto">
             Let's collaborate to bring your vision to life with our engineering expertise.
           </p>
           <Link 
             to="/#contact" 
-            className="inline-block bg-[#3b82e6] hover:bg-[#2563eb] text-white font-['Urbanist',sans-serif] font-medium text-[18px] py-4 px-12 rounded-[30px] transition-colors duration-300"
+            className="inline-block bg-[#3b82e6] hover:bg-[#2563eb] text-white font-['Urbanist',sans-serif] font-medium text-xs sm:text-sm md:text-[18px] py-3 md:py-4 px-6 md:px-12 rounded-[20px] md:rounded-[30px] transition-colors duration-300"
           >
             Start a Project
           </Link>

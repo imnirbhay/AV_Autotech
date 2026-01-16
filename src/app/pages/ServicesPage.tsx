@@ -47,17 +47,17 @@ export function ServicesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white py-20 px-8 pt-28 md:pt-32">
+    <div className="min-h-screen bg-white py-10 md:py-20 px-4 sm:px-6 md:px-8 pt-24 sm:pt-28 md:pt-32">
       <div className="max-w-[1400px] mx-auto">
         {/* Debug Info removed for production */}
 
         {/* Back Button */}
         <Link 
           to="/" 
-          className="inline-flex items-center gap-2 mb-12 text-[#171717] hover:text-[#3b82e6] transition-colors"
+          className="inline-flex items-center gap-2 mb-8 md:mb-12 text-[#171717] hover:text-[#3b82e6] transition-colors"
         >
           <ArrowLeft size={24} />
-          <span className="font-['Urbanist',sans-serif] text-[18px] font-medium">Back to Home</span>
+          <span className="font-['Urbanist',sans-serif] text-sm sm:text-base md:text-[18px] font-medium">Back to Home</span>
         </Link>
 
         {/* Page Header */}
@@ -65,13 +65,13 @@ export function ServicesPage() {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-8 md:mb-16"
         >
-          <h1 className="font-['Urbanist',sans-serif] text-[80px] leading-none tracking-[-1.6px] mb-6">
+          <h1 className="font-['Urbanist',sans-serif] text-3xl sm:text-5xl md:text-[80px] leading-none tracking-[-1.6px] mb-4 md:mb-6">
             <span className="font-semibold text-[#171717]">Our </span>
             <span className="font-bold text-[#3b82e6]">Services</span>
           </h1>
-          <p className="font-['Montserrat',sans-serif] text-[20px] text-[#525252] max-w-[800px] leading-relaxed">
+          <p className="font-['Montserrat',sans-serif] text-sm sm:text-base md:text-[20px] text-[#525252] max-w-[800px] leading-relaxed">
             We provide comprehensive engineering solutions tailored to your specific needs. 
             Our team of experts delivers excellence in every project, ensuring quality and innovation.
           </p>
@@ -137,18 +137,18 @@ export function ServicesPage() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-24 bg-gradient-to-br from-[#171717] to-[#2d2d2d] rounded-[40px] p-16 text-center"
+          className="mt-16 md:mt-24 bg-gradient-to-br from-[#171717] to-[#2d2d2d] rounded-[32px] md:rounded-[40px] p-8 md:p-16 text-center"
         >
-          <h2 className="font-['Urbanist',sans-serif] font-bold text-[48px] text-white mb-6">
+          <h2 className="font-['Urbanist',sans-serif] font-bold text-2xl sm:text-3xl md:text-[48px] text-white mb-4 md:mb-6">
             Need a Custom Solution?
           </h2>
-          <p className="font-['Montserrat',sans-serif] text-[18px] text-white/80 mb-8 max-w-[600px] mx-auto">
+          <p className="font-['Montserrat',sans-serif] text-xs sm:text-sm md:text-[18px] text-white/80 mb-6 md:mb-8 max-w-[600px] mx-auto">
             We offer tailored engineering solutions to meet your unique requirements. 
             Contact us to discuss your project.
           </p>
           <Link 
             to="/#contact" 
-            className="inline-block bg-[#3b82e6] hover:bg-[#2563eb] text-white font-['Urbanist',sans-serif] font-medium text-[18px] py-4 px-12 rounded-[30px] transition-colors duration-300"
+            className="inline-block bg-[#3b82e6] hover:bg-[#2563eb] text-white font-['Urbanist',sans-serif] font-medium text-xs sm:text-sm md:text-[18px] py-3 md:py-4 px-6 md:px-12 rounded-[20px] md:rounded-[30px] transition-colors duration-300"
           >
             Get in Touch
           </Link>

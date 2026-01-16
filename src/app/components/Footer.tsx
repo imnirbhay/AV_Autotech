@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, ArrowRight } from 'lucide-react';
 import contentData from '../../data/content.json';
 import imgFrame326 from '../../assets/3f0c7249e0ba3d9e3c1556a26c76670f11a0068c.png';
 
@@ -25,7 +25,7 @@ export function Footer() {
       <div className="relative z-10">
         {/* Main Footer Content */}
         <div className="max-w-[1440px] mx-auto px-8 py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 w-full">
             {/* Column 1 - Brand */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -59,7 +59,7 @@ export function Footer() {
               </div>
             </motion.div>
 
-            {/* Column 2 - Services */}
+            {/* Column 2 - Services
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -81,7 +81,7 @@ export function Footer() {
                   </motion.li>
                 ))}
               </ul>
-            </motion.div>
+            </motion.div> */}
 
             {/* Column 3 - Process */}
             <motion.div
@@ -92,7 +92,7 @@ export function Footer() {
               className="flex flex-col gap-6"
             >
               <h4 className="font-['Urbanist',sans-serif] font-bold text-white text-[24px] tracking-[-0.48px]">
-                Our Process
+                Navigation
               </h4>
               <ul className="flex flex-col gap-3">
                 {footer.sections.slice(3).map((item, index) => (
@@ -149,38 +149,27 @@ export function Footer() {
                 </motion.div>
               </div>
             </motion.div>
-          </div>
-        </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white/10">
-          <div className="max-w-[1440px] mx-auto px-8 py-8">
+            {/* Column 5 - Connect with Us CTA */}
             <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="flex flex-col md:flex-row items-center justify-between gap-4"
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-col gap-6"
             >
-              <p className="font-['Montserrat',sans-serif] text-white/50 text-[14px]">
-                © {new Date().getFullYear()} AV Autotech. All rights reserved.
-              </p>
-              <div className="flex items-center gap-6">
-                <motion.button 
-                  onClick={(e) => e.preventDefault()}
-                  whileHover={{ y: -2 }}
-                  className="font-['Montserrat',sans-serif] text-white/50 hover:text-[#3b82e6] text-[14px] transition-all"
-                >
-                  Privacy Policy
-                </motion.button>
-                <motion.button 
-                  onClick={(e) => e.preventDefault()}
-                  whileHover={{ y: -2 }}
-                  className="font-['Montserrat',sans-serif] text-white/50 hover:text-[#3b82e6] text-[14px] transition-all"
-                >
-                  Terms of Service
-                </motion.button>
-              </div>
+              <h4 className="font-['Urbanist',sans-serif] font-bold text-white text-[24px] tracking-[-0.48px]">
+                Connect with us
+              </h4>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={(e) => e.preventDefault()}
+                className="w-full md:w-[202px] h-[62px] bg-[#3b82e6] hover:bg-[#2563eb] rounded-[60px] flex items-center justify-center gap-3 font-['Montserrat',sans-serif] font-semibold text-white text-[16px] transition-all py-[10px] px-[20px]"
+              >
+                Contact Us
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
             </motion.div>
           </div>
         </div>
