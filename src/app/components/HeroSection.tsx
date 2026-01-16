@@ -32,7 +32,7 @@ export function HeroSection() {
   };
 
   return (
-    <section id="home" className="relative w-full md:min-h-screen flex items-center justify-center overflow-hidden pt-32 sm:pt-32 md:pt-32 pb-0 px-3 sm:px-4 md:min-h-screen min-h-auto">
+    <section id="home" className="relative w-full md:min-h-screen flex items-center justify-center overflow-hidden pt-24 sm:pt-32 md:pt-32 pb-0 px-3 sm:px-4 md:min-h-screen min-h-auto">
       {/* Background Image */}
       <div className="absolute inset-0 pointer-events-none">
         <img 

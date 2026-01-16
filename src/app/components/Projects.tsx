@@ -63,14 +63,13 @@ export function Projects() {
                     key={project._id}
                     variants={cardVariants}
                   >
-                    <div className="relative h-[400px] rounded-[32px] overflow-hidden shadow-lg transition-shadow duration-300 cursor-pointer bg-gradient-to-br from-[#3b82e6] to-[#1e3a8a]">
+                    <div className="relative h-[400px] rounded-[32px] overflow-hidden shadow-lg md:hover:shadow-2xl transition-shadow duration-300 cursor-pointer bg-gradient-to-br from-[#3b82e6] to-[#1e3a8a]">
                       {/* Background Image */}
                       <img
                         src={project.image}
                         alt={project.title}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500"
+                        className="absolute inset-0 w-full h-full object-cover md:group-hover:scale-110 transition-transform duration-500"
                       />
-                      
                       {/* Dark Overlay with gradient - Always visible */}
                       <div className="absolute inset-0 transition-all duration-300 pointer-events-none">
                         <div className="w-full h-full absolute inset-0" style={{background: 'linear-gradient(180deg, rgba(0,0,0,0.6) 0%, #000 97.45%)'}} />

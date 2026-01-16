@@ -71,13 +71,13 @@ export function Services() {
                         <img
                           src={service.image}
                           alt={service.title}
-                          className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          className="absolute inset-0 w-full h-full object-cover md:group-hover:scale-110 transition-transform duration-500"
                         />
                       )}
                       {/* Dark Overlay - Gets darker on hover with linear gradient */}
                       <div className="absolute inset-0 transition-all duration-300 pointer-events-none">
-                        <div className="w-full h-full bg-black/40 group-hover:opacity-0 transition-opacity duration-300" />
-                        <div className="w-full h-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{background: 'linear-gradient(180deg, rgba(0,0,0,0.6) 0%, #000 97.45%)'}} />
+                        <div className="w-full h-full bg-black/40 md:group-hover:opacity-0 transition-opacity duration-300" />
+                        <div className="w-full h-full absolute inset-0 opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" style={{background: 'linear-gradient(180deg, rgba(0,0,0,0.6) 0%, #000 97.45%)'}} />
                       </div>
                       {/* Content Container */}
                       <div className="absolute inset-0 flex flex-col justify-end p-8">
@@ -86,12 +86,12 @@ export function Services() {
                           {service.title}
                         </h3>
                         {/* Description and Button - Hidden by default, shown on hover */}
-                        <div className="max-h-0 overflow-hidden group-hover:max-h-64 transition-all duration-500 ease-in-out text-left md:text-left">
+                        <div className="max-h-0 overflow-hidden md:group-hover:max-h-64 transition-all duration-500 ease-in-out text-left md:text-left">
                           <p className="font-['Montserrat',sans-serif] text-[14px] text-white/90 leading-relaxed mb-6">
                             {service.description}
                           </p>
                           {/* View Details Button */}
-                          <button className="w-0 group-hover:w-full flex items-center justify-start gap-2 bg-[#3b82e6] text-white font-['Urbanist',sans-serif] font-semibold text-[14px] py-3 px-6 rounded-[12px] transition-all duration-300 overflow-hidden">
+                          <button className="w-0 md:group-hover:w-full flex items-center justify-start gap-2 bg-[#3b82e6] text-white font-['Urbanist',sans-serif] font-semibold text-[14px] py-3 px-6 rounded-[12px] transition-all duration-300 overflow-hidden">
                             View Details
                           </button>
                         </div>

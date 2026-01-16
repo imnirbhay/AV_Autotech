@@ -97,12 +97,11 @@ export function ServicesPage() {
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="absolute inset-0 w-full h-full object-cover md:group-hover:scale-110 transition-transform duration-500"
                     />
                   )}
-                  
                   {/* Dark Overlay - Gets darker on hover */}
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/70 transition-colors duration-300" />
+                  <div className="absolute inset-0 bg-black/40 md:group-hover:bg-black/70 transition-colors duration-300" />
 
                   {/* Content Container */}
                   <div className="absolute inset-0 flex flex-col justify-end p-8">
@@ -112,13 +111,12 @@ export function ServicesPage() {
                     </h3>
 
                     {/* Description and Button - Hidden by default, shown on hover */}
-                    <div className="max-h-0 overflow-hidden group-hover:max-h-64 transition-all duration-500 ease-in-out">
+                    <div className="max-h-0 overflow-hidden md:group-hover:max-h-64 transition-all duration-500 ease-in-out">
                       <p className="font-['Montserrat',sans-serif] text-[14px] text-white/90 leading-relaxed mb-6">
                         {service.description}
                       </p>
-                      
                       {/* View Details Button */}
-                      <button className="inline-flex items-center gap-2 bg-[#3b82e6] hover:bg-white text-white hover:text-[#3b82e6] font-['Urbanist',sans-serif] font-semibold text-[14px] py-3 px-6 rounded-[20px] transition-all duration-300">
+                      <button className="inline-flex items-center gap-2 bg-[#3b82e6] md:hover:bg-white text-white md:hover:text-[#3b82e6] font-['Urbanist',sans-serif] font-semibold text-[14px] py-3 px-6 rounded-[20px] transition-all duration-300">
                         View Details
                         <ChevronRight size={18} />
                       </button>
