@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import contentData from '../../data/content.json';
 import imgFrame326 from '../../assets/3f0c7249e0ba3d9e3c1556a26c76670f11a0068c.png';
 
@@ -37,7 +38,7 @@ export function Footer() {
               <motion.h3 
                 whileHover={{ scale: 1.05 }}
                 onClick={scrollToTop}
-                className="font-['Wallpoet',sans-serif] text-[40px] text-white tracking-[-0.48px] cursor-pointer"
+                className="font-['Wallpoet',sans-serif] text-[32px] text-white tracking-[-0.48px] cursor-pointer whitespace-nowrap"
               >
                 AV Autotech
               </motion.h3>
@@ -91,19 +92,42 @@ export function Footer() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex flex-col gap-6"
             >
-              <h4 className="font-['Urbanist',sans-serif] font-bold text-white text-[24px] tracking-[-0.48px]">
+              <h4 className="font-['Urbanist',sans-serif] font-bold text-[#3B82E6] text-[24px] tracking-[-0.48px]">
                 Navigation
               </h4>
               <ul className="flex flex-col gap-3">
-                {footer.sections.slice(3).map((item, index) => (
+                <Link to="/">
                   <motion.li 
-                    key={index}
                     whileHover={{ x: 5 }}
                     className="font-['Montserrat',sans-serif] text-white/70 text-[16px] hover:text-[#3b82e6] transition-all cursor-pointer"
                   >
-                    {item}
+                    Home
                   </motion.li>
-                ))}
+                </Link>
+                <Link to="/about">
+                  <motion.li 
+                    whileHover={{ x: 5 }}
+                    className="font-['Montserrat',sans-serif] text-white/70 text-[16px] hover:text-[#3b82e6] transition-all cursor-pointer"
+                  >
+                    About
+                  </motion.li>
+                </Link>
+                <Link to="/services">
+                  <motion.li 
+                    whileHover={{ x: 5 }}
+                    className="font-['Montserrat',sans-serif] text-white/70 text-[16px] hover:text-[#3b82e6] transition-all cursor-pointer"
+                  >
+                    Services
+                  </motion.li>
+                </Link>
+                <Link to="/projects">
+                  <motion.li 
+                    whileHover={{ x: 5 }}
+                    className="font-['Montserrat',sans-serif] text-white/70 text-[16px] hover:text-[#3b82e6] transition-all cursor-pointer"
+                  >
+                    Projects
+                  </motion.li>
+                </Link>
               </ul>
             </motion.div>
 
@@ -115,7 +139,7 @@ export function Footer() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-col gap-6"
             >
-              <h4 className="font-['Urbanist',sans-serif] font-bold text-white text-[24px] tracking-[-0.48px]">
+              <h4 className="font-['Urbanist',sans-serif] font-bold text-[#3B82E6] text-[24px] tracking-[-0.48px]">
                 Let's Connect there
               </h4>
               <div className="flex flex-col gap-4">
@@ -158,7 +182,7 @@ export function Footer() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-col gap-6"
             >
-              <h4 className="font-['Urbanist',sans-serif] font-bold text-white text-[24px] tracking-[-0.48px]">
+              <h4 className="font-['Urbanist',sans-serif] font-bold text-[#3B82E6] text-[24px] tracking-[-0.48px]">
                 Connect with us
               </h4>
               <motion.button
