@@ -32,7 +32,7 @@ export function HeroSection() {
   };
 
   return (
-    <section id="home" className="relative w-full md:min-h-screen flex items-center justify-center overflow-hidden pt-24 sm:pt-32 md:pt-32 pb-0 px-3 sm:px-4 md:min-h-screen min-h-auto">
+    <section id="home" className="relative w-full md:min-h-screen flex items-center justify-center overflow-visible md:overflow-hidden pt-24 sm:pt-32 md:pt-32 pb-20 md:pb-0 px-3 sm:px-4 md:min-h-screen min-h-auto">
       {/* Background Image */}
       <div className="absolute inset-0 pointer-events-none">
         <img 
@@ -86,7 +86,7 @@ export function HeroSection() {
         </motion.div>
 
         {/* Main Hero Image + Content Container */}
-        <div className="relative w-full flex items-center justify-center gap-2 sm:gap-4 md:gap-6">
+        <div className="relative w-full flex items-center justify-center gap-2 sm:gap-4 md:gap-6 overflow-visible md:overflow-hidden pb-4 md:pb-0">
 
           {/* Center Image with decorative elements */}
           <motion.div 
@@ -111,7 +111,7 @@ export function HeroSection() {
             {/* Bottom CTA Buttons - Stacked on mobile, row on desktop */}
             <motion.div 
               variants={itemVariants}
-              className="absolute bottom-0 sm:bottom-4 md:bottom-12 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-md rounded-2xl md:rounded-full p-1 sm:p-1.5 md:p-3 flex flex-col md:flex-row items-center gap-2 md:gap-3 shadow-xl w-full max-w-xs md:w-auto md:max-w-none"
+              className="absolute -bottom-16 sm:-bottom-14 md:bottom-12 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-md rounded-2xl md:rounded-full p-1 sm:p-1.5 md:p-3 flex flex-col md:flex-row items-center gap-2 md:gap-3 shadow-xl w-full max-w-xs md:w-auto md:max-w-none"
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -132,7 +132,7 @@ export function HeroSection() {
                 <Link
                   to="/#contact"
                   className={`w-full md:w-auto px-4 md:px-8 py-2 md:py-4 rounded-xl md:rounded-full font-urbanist text-sm md:text-lg tracking-tight border transition-all duration-200 whitespace-nowrap text-center md:text-left
-                    ${activeBtn === 'contact' ? 'bg-[#FD853A] text-white border-[#FD853A] font-medium' : 'bg-transparent text-white border-white font-light hover:bg-[#FD853A] hover:border-[#FD853A]'}
+                    bg-[#FD853A] text-white border-[#FD853A] font-medium md:bg-transparent md:text-white md:border-white md:font-light md:hover:bg-[#FD853A] md:hover:border-[#FD853A]
                   `}
                   onMouseEnter={() => setActiveBtn('contact')}
                   onMouseLeave={() => setActiveBtn(null)}
